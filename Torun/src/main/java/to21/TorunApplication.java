@@ -9,5 +9,8 @@ public class TorunApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TorunApplication.class, args); //변경테스트
 	}
-
+	public static void main3(String[] args) {
+		SpringApplication.run(TorunApplication.class, args);
+		System.out.println("샌드위치");
+	}
 }
