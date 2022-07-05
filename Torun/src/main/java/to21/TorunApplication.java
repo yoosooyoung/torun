@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TorunApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TorunApplication.class, args);
+		SpringApplication.run(TorunApplication.class, args); //변경테스트
 	}
 
 }
