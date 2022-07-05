@@ -7,10 +7,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class TorunApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(TorunApplication.class, args); //변경테스트
+		SpringApplication.run(TorunApplication.class, args); 
 	}
 	public static void main3(String[] args) {
 		SpringApplication.run(TorunApplication.class, args);
-		System.out.println("샌드위치");
+		System.out.println("Torun");
 	}
 }
