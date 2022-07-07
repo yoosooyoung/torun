@@ -12,5 +12,6 @@ public class TorunApplication {
 	public static void main3(String[] args) {
 		SpringApplication.run(TorunApplication.class, args);
 		System.out.println("Torun");
+		System.out.println("hello torun");
 	}
 }
