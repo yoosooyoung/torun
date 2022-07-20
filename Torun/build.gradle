@@ -26,6 +26,9 @@ dependencies {
 	implementation 'javax.servlet:jstl'
 	implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
 	implementation 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok:'
 }
 
 tasks.named('test') {
