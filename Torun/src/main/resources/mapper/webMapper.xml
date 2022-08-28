@@ -6,4 +6,28 @@
     <select id="time"  resultType="String">
 		select SYSDATE from dual
     </select>
+    
+    <insert id="insertBoard" parameterType="com.to21.torun.vo.webVo">
+    	INSERT INTO BOARD (
+			   BOARD_SEQ,
+			   BOARD_TITLE,
+			   BOARD_CONTENT,
+			   BOARD_INIT_DATE,
+			   BOARD_VIEWS,
+			   WRITER
+			   )
+	    VALUES(
+	    	   BOARD_SEQ.NEXTVAL, 
+		       #{board_title}, 
+		       #{board_content}, 
+		       TO_CHAR(SYSDATE,'yyyy.mm.dd hh24:mi'),
+		       0,
+		       #{writer})
+    	
+    </insert>
+    
+    <select id="boardList" resultType="map">
+    	SELECT * 
+    	  FROM BOARD
+    </select>
 </mapper>

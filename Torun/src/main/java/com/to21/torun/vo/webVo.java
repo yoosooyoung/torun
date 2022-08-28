@@ -15,8 +15,15 @@ public class webVo {
 	private String board_views;//조회수
 	private String board_init_date;//작성시간
 	private String board_update_date;//업데이트시간
+	private String writer;//작성자
 	
 	
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
 	public String getBoard_seq() {
 		return board_seq;
 	}

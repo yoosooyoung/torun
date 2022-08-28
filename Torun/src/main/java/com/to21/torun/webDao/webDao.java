@@ -1,10 +1,19 @@
 package com.to21.torun.webDao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Mapper;
+
+import com.to21.torun.vo.webVo;
 
 @Mapper
 public interface webDao {
 	
 	public String time();
+
+	public void insertBoard(webVo vo);
+
+	public List<Map<String, String>> boardList();
 
 }

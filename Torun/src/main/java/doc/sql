@@ -1,0 +1,22 @@
+CREATE TABLE board 
+( 
+    board_seq       NUMBER(4)	NOT NULL,
+    board_title       VARCHAR2(200),
+    board_content  VARCHAR2(4000),
+    board_views          VARCHAR2(200),
+    board_init_date    VARCHAR2(20),
+    board_update_date        VARCHAR2(20),
+    writer        VARCHAR2(200)
+);
+
+ALTER TABLE board ADD CONSTRAINT board_pk PRIMARY KEY (board_seq);
+
+
+CREATE SEQUENCE board_seq
+       INCREMENT BY 1
+       START WITH 1
+       MINVALUE 1
+       MAXVALUE 9999
+       NOCYCLE
+       NOCACHE
+       NOORDER;
