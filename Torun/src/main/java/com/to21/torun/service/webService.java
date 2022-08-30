@@ -13,5 +13,11 @@ public interface webService {
 
 	public List<Map<String, String>> boardList();
 
+	public Map<String, String> selectBoard(String board_seq);
+
+	public void updateBoard(webVo vo);
+
+	public void updateViews(webVo vo);
+
 
 }

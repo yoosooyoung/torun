@@ -16,4 +16,10 @@ public interface webDao {
 
 	public List<Map<String, String>> boardList();
 
+	public Map<String, String> selectBoard(String board_seq);
+
+	public void updateBoard(webVo webVo);
+
+	public void updateViews(webVo webVo);
+
 }

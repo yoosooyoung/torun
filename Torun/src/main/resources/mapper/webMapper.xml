@@ -26,8 +26,29 @@
     	
     </insert>
     
-    <select id="boardList" resultType="map">
+    <select id="boardList" resultType="hashmap">
     	SELECT * 
     	  FROM BOARD
     </select>
+    
+   	<select id="selectBoard" resultType="hashmap" parameterType="String">
+    	SELECT * 
+    	  FROM BOARD
+    	 WHERE BOARD_SEQ = #{board_seq}
+    </select>
+
+   	<update id="updateBoard" parameterType="com.to21.torun.vo.webVo">
+    	UPDATE BOARD
+    	   SET BOARD_TITLE = #{board_title},
+    	       BOARD_CONTENT = #{board_content},
+    	       WRITER = #{writer},
+    	       BOARD_UPDATE_DATE = TO_CHAR(SYSDATE,'yyyy.mm.dd hh24:mi')
+    	 WHERE BOARD_SEQ = #{board_seq}
+    </update>
+
+   	<update id="updateViews" parameterType="com.to21.torun.vo.webVo">
+    	UPDATE BOARD
+    	   SET BOARD_VIEWS = (SELECT BOARD_VIEWS+1 FROM BOARD WHERE BOARD_SEQ = #{board_seq})
+    	 WHERE BOARD_SEQ = #{board_seq}
+    </update>       
 </mapper>

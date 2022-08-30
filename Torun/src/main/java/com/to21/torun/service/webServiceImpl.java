@@ -29,5 +29,20 @@ public class webServiceImpl implements webService {
 	public List<Map<String, String>> boardList() {
 		return webDao.boardList();
 	}
+
+	@Override
+	public Map<String, String> selectBoard(String board_seq) {
+		return webDao.selectBoard(board_seq);
+	}
 	
+	@Override
+	public void updateBoard(webVo vo) {
+		webDao.updateBoard((vo));
+	}
+	
+	@Override
+	public void updateViews(webVo vo) {
+		webDao.updateViews((vo));
+		
+	}
 }

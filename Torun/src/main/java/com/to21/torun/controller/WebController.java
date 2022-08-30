@@ -26,6 +26,12 @@ public class WebController {
         return "index";
     }
     
+    /**
+     * 글쓰기 페이지
+     * @param model
+     * @param vo
+     * @return
+     */
     @RequestMapping("/write")
     public String write(Model model, webVo vo) {
         return "write";
@@ -39,13 +45,40 @@ public class WebController {
      */
     @RequestMapping("/board/insert")
     @ResponseBody
-    public Map<String, String >boardInsert(Model model, webVo vo) {
+    public Map<String, String> boardInsert(Model model, webVo vo) {
     	Map<String, String>result = new HashMap<>();
     	webSvc.insertBoard(vo);	
     	result.put("result", "success");    	
     	return result;
     }
-
     
+    /**
+     * 뷰페이지
+     * @param model
+     * @param vo
+     */
+    @RequestMapping("/board/view")
+    public String boardView(Model model, webVo vo) {
+    	String board_seq = vo.getBoard_seq();
+    	//조회수올리기
+    	webSvc.updateViews(vo);
+    	Map<String, String>selectBoard = webSvc.selectBoard(board_seq);
+    	model.addAttribute("selectBoard", selectBoard);
+    	return "view";
+    }
+
+    /**
+     * 뷰페이지
+     * @param model
+     * @param vo
+     */
+    @RequestMapping("/board/update")
+    @ResponseBody
+    public Map<String, String> boardUpdate(Model model, webVo vo) {
+    	Map<String, String>result = new HashMap<>();
+    	webSvc.updateBoard(vo);
+    	result.put("result", "success");    	
+    	return result;
+    }   
     
 }

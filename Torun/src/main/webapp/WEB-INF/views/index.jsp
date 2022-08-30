@@ -36,7 +36,7 @@
 	<c:forEach var="item" items="${list}">
 	<tr>
 		<td>${item.BOARD_SEQ}</td>
-		<td><a href="/write">${item.BOARD_TITLE}</a></td>
+		<td><a href="/board/view?board_seq=${item.BOARD_SEQ}">${item.BOARD_TITLE}</a></td>
 		<td><a href="/write">${item.BOARD_CONTENT}</a></td>
 		<td>${item.WRITER}</td>
 		<td>${item.BOARD_INIT_DATE}</td>
