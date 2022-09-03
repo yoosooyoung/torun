@@ -43,6 +43,10 @@ public class webServiceImpl implements webService {
 	@Override
 	public void updateViews(webVo vo) {
 		webDao.updateViews((vo));
-		
+	}
+	
+	@Override
+	public void delBoard(webVo vo) {
+		webDao.delViews((vo));
 	}
 }

@@ -34,6 +34,10 @@ public class WebController {
      */
     @RequestMapping("/write")
     public String write(Model model, webVo vo) {
+    	if(vo.getBoard_seq() != null) {
+    		Map<String, String>selectBoard = webSvc.selectBoard(vo.getBoard_seq().toString());
+    		model.addAttribute("selectBoard", selectBoard);
+    	}
         return "write";
     }
         
@@ -68,7 +72,7 @@ public class WebController {
     }
 
     /**
-     * 뷰페이지
+     * 수정
      * @param model
      * @param vo
      */
@@ -80,5 +84,20 @@ public class WebController {
     	result.put("result", "success");    	
     	return result;
     }   
+    
+    /**
+     * 삭제
+     * @param model
+     * @param vo
+     */
+    @RequestMapping("/board/delete")
+    @ResponseBody
+    public Map<String, String> boardDel(Model model, webVo vo) {
+    	Map<String, String>result = new HashMap<>();
+    	webSvc.delBoard(vo);
+    	result.put("result", "success");    	
+    	return result;
+    }     
+    
     
 }

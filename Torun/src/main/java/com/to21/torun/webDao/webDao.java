@@ -22,4 +22,6 @@ public interface webDao {
 
 	public void updateViews(webVo webVo);
 
+	public void delViews(webVo webVo);
+
 }

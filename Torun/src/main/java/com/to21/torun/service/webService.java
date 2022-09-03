@@ -19,5 +19,7 @@ public interface webService {
 
 	public void updateViews(webVo vo);
 
+	public void delBoard(webVo vo);
+
 
 }

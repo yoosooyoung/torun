@@ -8,30 +8,35 @@
 </head>
 <body>
 	<form id ="theForm">
-		<input type="hidden" name="board_seq" value="${selectBoard.BOARD_SEQ}">
+		<input type="hidden" id="board_seq" name="board_seq" value="${selectBoard.BOARD_SEQ}">
 		<div>제목</div>
-		<div><input type="text" name="board_title" value="${selectBoard.BOARD_TITLE}"></div>
+		<div>${selectBoard.BOARD_TITLE}</div>
 
 		<div>글</div>
-		<div><textarea name="board_content" >${selectBoard.BOARD_CONTENT}</textarea></div>
+		<div>${selectBoard.BOARD_CONTENT}</div>
 
 		<div>작성자</div>
-		<div><input type="text" name="writer" value="${selectBoard.WRITER}"></div>
+		<div>${selectBoard.WRITER}</div>
 		<div>조회수</div>
 		<div>${selectBoard.BOARD_VIEWS}</div>
 	<button id="button">수정하기</button>
+	<button id="del_button">삭제하기</button>
 	</form>
 	<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
 	<script>
     $(document).ready(function() {
 
 	});
-
-	  
     $("#button").click(function(e){
     	e.preventDefault();
+    	location.href = "/write?board_seq="+ $("#board_seq").val();
+    });
+    
+	  
+    $("#del_button").click(function(e){
+    	e.preventDefault();
         $.ajax({
-            url: "/board/update", // 목적지
+            url: "/board/delete", // 목적지
             type: "POST", // HTTP Method
             data: $("#theForm").serialize(), // 전송 데이터
             dataType: 'json', // 전송 데이터 형식
@@ -43,7 +48,7 @@
                 console.log("실패 원인 : " + er);
             }
         });
-      }); 
+      });     
 </script>
 </body>
 </html>

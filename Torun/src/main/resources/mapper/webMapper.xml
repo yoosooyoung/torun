@@ -29,6 +29,7 @@
     <select id="boardList" resultType="hashmap">
     	SELECT * 
     	  FROM BOARD
+      ORDER BY NVL(BOARD_UPDATE_DATE,BOARD_INIT_DATE) DESC
     </select>
     
    	<select id="selectBoard" resultType="hashmap" parameterType="String">
@@ -50,5 +51,11 @@
     	UPDATE BOARD
     	   SET BOARD_VIEWS = (SELECT BOARD_VIEWS+1 FROM BOARD WHERE BOARD_SEQ = #{board_seq})
     	 WHERE BOARD_SEQ = #{board_seq}
-    </update>       
+    </update>     
+      
+   	<delete id="delViews" parameterType="com.to21.torun.vo.webVo">
+    	DELETE
+    	  FROM BOARD
+    	 WHERE BOARD_SEQ = #{board_seq}
+    </delete>       
 </mapper>
