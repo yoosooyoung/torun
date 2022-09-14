@@ -6,22 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+      <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css">
 </head>
-<style>
-  table {
-    width: 100%;
-    border-top: 1px solid #444444;
-    border-collapse: collapse;
-  }
-  th, td {
-    border-bottom: 1px solid #444444;
-    border-left: 1px solid #444444;
-    padding: 10px;
-  }
-  th:first-child, td:first-child {
-    border-left: none;
-  }
-</style>
 <body>
 	<h1>게시판</h1>
 	<table>
@@ -37,7 +23,7 @@
 	<tr>
 		<td>${item.BOARD_SEQ}</td>
 		<td><a href="/board/view?board_seq=${item.BOARD_SEQ}">${item.BOARD_TITLE}</a></td>
-		<td><a href="/write">${item.BOARD_CONTENT}</a></td>
+		<td><a href="/board/view?board_seq=${item.BOARD_SEQ}">${item.BOARD_CONTENT}</a></td>
 		<td>${item.WRITER}</td>
 		<td>${item.BOARD_INIT_DATE}</td>
 		<td>${item.BOARD_VIEWS}</td>

@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.to21.torun.vo.commentVo;
 import com.to21.torun.vo.webVo;
 import com.to21.torun.webDao.webDao;
 @Service
@@ -48,5 +49,15 @@ public class webServiceImpl implements webService {
 	@Override
 	public void delBoard(webVo vo) {
 		webDao.delViews((vo));
+	}
+	
+	@Override
+	public List<Map<String, String>> selectComment(String board_seq) {
+		return webDao.selectComment(board_seq);
+	}
+	
+	@Override
+	public void insertComment(commentVo vo) {
+		webDao.insertComment(vo);
 	}
 }

@@ -18,12 +18,12 @@
 
 		<div>작성자</div>
 		<div><input type="text" name="writer" value="${selectBoard.WRITER}"></div>
-	<c:if test="${selectBoard.BOARD_SEQ == null}">		
-		<button id="button">작성하기</button>
-	</c:if>
-	<c:if test="${selectBoard.BOARD_SEQ != null}">
-		<button id="mod_button">수정하기</button>
-	</c:if>
+		<c:if test="${selectBoard.BOARD_SEQ == null}">		
+			<button id="button">작성하기</button>
+		</c:if>
+		<c:if test="${selectBoard.BOARD_SEQ != null}">
+			<button id="mod_button">수정하기</button>
+		</c:if>
 	</form>
 	<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
 	<script>

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.to21.torun.vo.commentVo;
 import com.to21.torun.vo.webVo;
 
 @Mapper
@@ -23,5 +24,9 @@ public interface webDao {
 	public void updateViews(webVo webVo);
 
 	public void delViews(webVo webVo);
+
+	public List<Map<String, String>> selectComment(String board_seq);
+
+	public void insertComment(commentVo vo);
 
 }

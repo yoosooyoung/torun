@@ -1,5 +1,6 @@
 package com.to21.torun.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.to21.torun.service.webService;
+import com.to21.torun.vo.commentVo;
 import com.to21.torun.vo.webVo;
 
 @Controller
@@ -19,8 +21,15 @@ public class WebController {
     @Autowired
     private webService webSvc;
 	
+    /**
+     * 초기 페이지
+     * @param model
+     * @param vo
+     * @return
+     */
     @RequestMapping("/")
     public String main(Model model, webVo vo) {
+    	
     	List<Map<String,String>> list = webSvc.boardList();
     	model.addAttribute("list", list);
         return "index";
@@ -66,8 +75,10 @@ public class WebController {
     	String board_seq = vo.getBoard_seq();
     	//조회수올리기
     	webSvc.updateViews(vo);
-    	Map<String, String>selectBoard = webSvc.selectBoard(board_seq);
+    	Map<String, String> selectBoard = webSvc.selectBoard(board_seq);
+    	List<Map<String,String>> selectComment = webSvc.selectComment(board_seq);
     	model.addAttribute("selectBoard", selectBoard);
+    	model.addAttribute("selectComment", selectComment);
     	return "view";
     }
 
@@ -97,7 +108,23 @@ public class WebController {
     	webSvc.delBoard(vo);
     	result.put("result", "success");    	
     	return result;
-    }     
+    }    
     
-    
+    /**
+     * 댓글인서트
+     * @param model
+     * @param vo
+     */
+    @RequestMapping("/board/comment/insert")
+    @ResponseBody
+    public Map<String, Object> commentInsert(Model model, commentVo vo){
+    	Map<String, Object>result = new HashMap<>();
+    	if(!vo.getWriter().equals("")) {
+        	webSvc.insertComment(vo);	
+    	}
+    	String board_seq = vo.getBoard_seq();
+    	List<Map<String,String>> selectComment = webSvc.selectComment(board_seq);
+    	result.put("selectComment", selectComment);    	
+    	return result;
+    }
 }
