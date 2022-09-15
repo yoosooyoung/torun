@@ -11,24 +11,35 @@
     
 </head>
 <body>
-	<form id ="theForm">
+<div class="container">
+	<form id ="theForm" class="col-md-12 my-3">
 		<h4>게시판</h4>
 		<input type="hidden" id="board_seq" name="board_seq" value="${selectBoard.BOARD_SEQ}">
-		<div>제목</div>
-		<div>${selectBoard.BOARD_TITLE}</div>
-
-		<div>글</div>
-		<div>${selectBoard.BOARD_CONTENT}</div>
-
-		<div>작성자</div>
-		<div>${selectBoard.WRITER}</div>
-		<div>조회수</div>
-		<div>${selectBoard.BOARD_VIEWS}</div>
-	<button id="button" class="btn btn-primary">수정하기</button>
-	<button id="del_button" class="btn btn-danger">삭제하기</button>
-	<button id="list_button" class="btn btn-success">목록가기</button>
+		<table class="table-bordered">
+			<tr>
+				<th>제목</th>
+				<td>${selectBoard.BOARD_TITLE}</td>
+			</tr>
+			<tr>
+				<th>글</th>
+				<td>${selectBoard.BOARD_CONTENT}</td>
+			</tr>
+			<tr>
+				<th>작성자</th>
+				<td>${selectBoard.WRITER}</td>
+			</tr>
+			<tr>
+				<th>조회수</th>
+				<td>${selectBoard.BOARD_VIEWS}</td>
+			</tr>
+		</table>
+		<div class="col-md-12 bg-light text-right my-3"">	
+			<button id="button" class="btn btn-primary">수정하기</button>
+			<button id="del_button" class="btn btn-danger">삭제하기</button>
+			<button id="list_button" class="btn btn-success">목록가기</button>
+		</div>
 	</form>
-	<form id ="comment"  class="col-md-8">
+	<form id ="comment" class="col-md-8 my-3">
 		<table class="table-bordered">
 			<tr>
 				<th>작성자</th>
@@ -42,16 +53,13 @@
 			</tr>
 		</table>
 		<input type="hidden" name="board_seq" value="${selectBoard.BOARD_SEQ}">
-	</form>	
-	<div class="col-md-8">
+	</form>
+	<div class="col-md-8 my-3">
 		<table id ="commentList" class="table-bordered table-hover">
-			<tr>
-				<th>작성자</th>
-				<th>댓글</th>
-			</tr>
+
 		</table>
 	</div>  
-		
+</div>		
 	<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
 	<script src="/resources/js/board-view.js"></script>
 </body>

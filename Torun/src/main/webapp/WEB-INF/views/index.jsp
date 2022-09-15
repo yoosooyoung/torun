@@ -11,7 +11,7 @@
       <link href="${pageContext.request.contextPath}/resources/static/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div class="col-md-8">
+	<div class="container">
 		<h1>게시판</h1>
 		<table>
 		<tr>
@@ -35,11 +35,11 @@
 			</c:forEach>
 		</c:if>
 		<c:if test="${fn:length(list) == 0}">
-			<td colspan="6">글이 없습니다.</td>
+			<td colspan="6" class="text-center">글이 없습니다.</td>
 		</c:if>
 		</table>
+	<div class="col-md-12 bg-light text-right my-3"><a href="/write" class="btn btn-primary">글쓰기</a></div>
 	</div>
-	<div><a href="/write" class="btn btn-primary">글쓰기</a></div>
 	<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
 	<script>
 

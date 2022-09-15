@@ -94,7 +94,8 @@ public class WebController {
     public Map<String, String> boardUpdate(Model model, webVo vo) {
     	Map<String, String>result = new HashMap<>();
     	webSvc.updateBoard(vo);
-    	result.put("result", "success");    	
+    	result.put("result", "success");    
+    	result.put("seq", vo.getBoard_seq().toString());  
     	return result;
     }   
     
