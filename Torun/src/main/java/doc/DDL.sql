@@ -23,25 +23,3 @@ CREATE SEQUENCE comment_seq
        NOCACHE
        NOORDER;
        
-       SELECT * FROM BOARD_COMMENT;
-       SELECT COMMENT_SEQ.NEXTVAL FROM DUAL;
-       
-    	INSERT BOARD_COMMENT (
-			   BOARD_SEQ,
-			   COMMENT_SEQ,
-               PARENT_COMMENT_SEQ,
-			   CONTENT,
-			   WRITER,
-			   INIT_DATE
-			   )
-	    VALUES(
-	    	   '8',
-	    	   COMMENT_SEQ.NEXTVAL, 
-               '0',
-		       '6666', 
-		       '888', 
-		       TO_CHAR(SYSDATE,'yyyy.mm.dd hh24:mi')
-		       )
-               
-               
-               
