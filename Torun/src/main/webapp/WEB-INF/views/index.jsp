@@ -11,7 +11,7 @@
       <link href="${pageContext.request.contextPath}/resources/static/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div class="container">
+	<div class="container my-5">
 		<h1>게시판</h1>
 		<table>
 		<tr>

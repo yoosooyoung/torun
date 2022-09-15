@@ -10,13 +10,15 @@
      <link href="${pageContext.request.contextPath}/resources/static/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<form id ="theForm" class="col-md-6">
+<div class="container my-5">
+	<form id ="theForm" class="col-md-12 my-3">
+		<h4>글쓰기</h4>
 		<input type="hidden" name="board_seq" value="${selectBoard.BOARD_SEQ}" class="form form-control">
 		<div>제목</div>
 		<div><input type="text" name="board_title" value="${selectBoard.BOARD_TITLE}" class="form form-control"></div>
 
 		<div>글</div>
-		<div><textarea name="board_content" class="form form-control">${selectBoard.BOARD_CONTENT}</textarea></div>
+		<div><textarea name="board_content" class="form form-control" style="height: 500px">${selectBoard.BOARD_CONTENT}</textarea></div>
 
 		<div>작성자</div>
 		<div><input type="text" name="writer" value="${selectBoard.WRITER}" class="form form-control"></div>
@@ -31,6 +33,7 @@
 		</div>
 		</c:if>
 	</form>
+</div>
 	<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
 	<script>
     $(document).ready(function() {

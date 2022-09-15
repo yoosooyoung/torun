@@ -11,16 +11,16 @@
     
 </head>
 <body>
-<div class="container">
+<div class="container my-5">
 	<form id ="theForm" class="col-md-12 my-3">
-		<h4>게시판</h4>
+		<h4>게시글 상세보기</h4>
 		<input type="hidden" id="board_seq" name="board_seq" value="${selectBoard.BOARD_SEQ}">
 		<table class="table-bordered">
 			<tr>
 				<th>제목</th>
 				<td>${selectBoard.BOARD_TITLE}</td>
 			</tr>
-			<tr>
+			<tr style="height: 500px">
 				<th>글</th>
 				<td>${selectBoard.BOARD_CONTENT}</td>
 			</tr>
