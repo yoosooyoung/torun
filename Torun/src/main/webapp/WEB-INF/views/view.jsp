@@ -28,16 +28,29 @@
 	<button id="del_button" class="btn btn-danger">삭제하기</button>
 	<button id="list_button" class="btn btn-success">목록가기</button>
 	</form>
-	<form id ="comment">
-		<h4>댓글</h4>
-		<!-- 작성자 -->
-		<span>작성자 : </span><input type="text" name="writer" id="writer">
-		<!-- 글내용 -->
-		<span>댓글 : </span><input type="text" name="content" id="content">
+	<form id ="comment"  class="col-md-8">
+		<table class="table-bordered">
+			<tr>
+				<th>작성자</th>
+				<th>댓글</th>
+				<th></th>
+			</tr>
+			<tr>
+				<td><input type="text" name="writer" id="writer" class="form-control"></td>
+				<td><input type="text" name="content" id="content" class="form-control"></td>
+				<td><button id="comment_button" class="btn btn-primary">작성하기</button></td>
+			</tr>
+		</table>
 		<input type="hidden" name="board_seq" value="${selectBoard.BOARD_SEQ}">
-		<button id="comment_button" class="btn btn-primary">작성하기</button>
 	</form>	
-	<div><table id ="commentList" class="table-bordered"></table></div>  
+	<div class="col-md-8">
+		<table id ="commentList" class="table-bordered table-hover">
+			<tr>
+				<th>작성자</th>
+				<th>댓글</th>
+			</tr>
+		</table>
+	</div>  
 		
 	<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
 	<script src="/resources/js/board-view.js"></script>

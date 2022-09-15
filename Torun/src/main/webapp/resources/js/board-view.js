@@ -44,12 +44,11 @@ $('#comment_button').click(function(e){
         success: function(res){ // 성공 시 실행
         var tblresult = res.selectComment.reverse();
         var str = "";
-        $("#commentList").empty();
+        $(".comment_tr").remove();
         $.each(tblresult, function(i){
-            str += "<TR>"
+            str += "<TR class='comment_tr'>"
             str += '<TD>' + tblresult[i].WRITER + '</TD><TD>' + tblresult[i].CONTENT + '</TD>'
             str += '</TR>'
-            
         });
         	$("#commentList").append(str);
         	$("#writer").val('');
