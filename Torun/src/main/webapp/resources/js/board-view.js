@@ -8,7 +8,7 @@ $(document).ready(function() {
         data: $("#comment").serialize(), // 전송 데이터
         dataType: 'json', // 전송 데이터 형식
         success: function(res){ // 성공 시 실행
-        var tblresult = res.selectComment;
+        var tblresult = res.selectComment.reverse();
         var str = "";
         $.each(tblresult, function(i){
             str += "<TR>"
@@ -42,8 +42,9 @@ $('#comment_button').click(function(e){
         data: $("#comment").serialize(), // 전송 데이터
         dataType: 'json', // 전송 데이터 형식
         success: function(res){ // 성공 시 실행
-        var tblresult = res.selectComment;
+        var tblresult = res.selectComment.reverse();
         var str = "";
+        $("#commentList").empty();
         $.each(tblresult, function(i){
             str += "<TR>"
             str += '<TD>' + tblresult[i].WRITER + '</TD><TD>' + tblresult[i].CONTENT + '</TD>'
@@ -51,6 +52,8 @@ $('#comment_button').click(function(e){
             
         });
         	$("#commentList").append(str);
+        	$("#writer").val('');
+        	$("#content").val('');
         },
         error:function(er){ //실패 시 실행
             console.log("실패 원인 : " + er);

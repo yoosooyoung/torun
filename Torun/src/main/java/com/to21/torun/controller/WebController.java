@@ -106,6 +106,7 @@ public class WebController {
     public Map<String, String> boardDel(Model model, webVo vo) {
     	Map<String, String>result = new HashMap<>();
     	webSvc.delBoard(vo);
+    	//todo 댓글삭제해야돼
     	result.put("result", "success");    	
     	return result;
     }    

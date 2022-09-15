@@ -27,10 +27,10 @@
 	</form>
 	<form id ="comment">
 		<h4>댓글</h4>
-		<!-- 글내용 -->
-		<input type="text" name="content" >
 		<!-- 작성자 -->
-		<input type="text" name="writer">
+		<span>작성자 : </span><input type="text" name="writer" id="writer">
+		<!-- 글내용 -->
+		<span>댓글 : </span><input type="text" name="content" id="content">
 		<input type="hidden" name="board_seq" value="${selectBoard.BOARD_SEQ}">
 		<button id="comment_button">작성하기</button>
 	</form>	
