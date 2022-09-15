@@ -15,6 +15,8 @@ import com.to21.torun.service.webService;
 import com.to21.torun.vo.commentVo;
 import com.to21.torun.vo.webVo;
 
+import ch.qos.logback.classic.Logger;
+
 @Controller
 public class WebController {
 
@@ -105,14 +107,18 @@ public class WebController {
     @ResponseBody
     public Map<String, String> boardDel(Model model, webVo vo) {
     	Map<String, String>result = new HashMap<>();
-    	webSvc.delBoard(vo);
-    	//todo 댓글삭제해야돼
-    	result.put("result", "success");    	
+    	try {
+        	webSvc.delBoard(vo);
+        	webSvc.delComment(vo);
+        	result.put("result", "success");  
+		} catch (Exception e) {
+			result.put("result","fail");
+		}
     	return result;
     }    
     
     /**
-     * 댓글인서트
+     * 댓글인서트 && 뷰페이지 읽기
      * @param model
      * @param vo
      */

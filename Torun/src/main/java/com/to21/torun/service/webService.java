@@ -26,5 +26,6 @@ public interface webService {
 
 	public void insertComment(commentVo vo);
 
+	public void delComment(webVo vo);
 
 }

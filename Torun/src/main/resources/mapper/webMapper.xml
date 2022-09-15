@@ -83,4 +83,10 @@
 		       )
     	
     </insert>
+    
+    <delete id="delComment" parameterType="com.to21.torun.vo.webVo">
+    	DELETE 
+    	  FROM BOARD_COMMENT
+    	  WHERE BOARD_SEQ = #{board_seq}
+    </delete>
 </mapper>

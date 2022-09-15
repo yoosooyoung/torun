@@ -6,6 +6,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
+     <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css">
+     <link href="${pageContext.request.contextPath}/resources/static/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<form id ="theForm">
@@ -19,10 +21,10 @@
 		<div>작성자</div>
 		<div><input type="text" name="writer" value="${selectBoard.WRITER}"></div>
 		<c:if test="${selectBoard.BOARD_SEQ == null}">		
-			<button id="button">작성하기</button>
+			<button id="button" class="btn btn-primary">작성하기</button>
 		</c:if>
 		<c:if test="${selectBoard.BOARD_SEQ != null}">
-			<button id="mod_button">수정하기</button>
+			<button id="mod_button" class="btn btn-danger">수정하기</button>
 		</c:if>
 	</form>
 	<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>

@@ -60,4 +60,9 @@ public class webServiceImpl implements webService {
 	public void insertComment(commentVo vo) {
 		webDao.insertComment(vo);
 	}
+	
+	@Override
+	public void delComment(webVo vo) {
+		webDao.delComment(vo);
+	}
 }

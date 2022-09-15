@@ -29,4 +29,6 @@ public interface webDao {
 
 	public void insertComment(commentVo vo);
 
+	public void delComment(webVo vo);
+
 }
