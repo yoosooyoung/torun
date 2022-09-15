@@ -37,7 +37,7 @@
 	<tr>
 		<td>${item.BOARD_SEQ}</td>
 		<td><a href="/board/view?board_seq=${item.BOARD_SEQ}">${item.BOARD_TITLE}</a></td>
-		<td><a href="/write">${item.BOARD_CONTENT}</a></td>
+		<td><a href="/board/view?board_seq=${item.BOARD_SEQ}">${item.BOARD_CONTENT}</a></td>
 		<td>${item.WRITER}</td>
 		<td>${item.BOARD_INIT_DATE}</td>
 		<td>${item.BOARD_VIEWS}</td>
