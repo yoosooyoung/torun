@@ -57,5 +57,30 @@
     	DELETE
     	  FROM BOARD
     	 WHERE BOARD_SEQ = #{board_seq}
-    </delete>       
+    </delete> 
+    
+    <select id="selectComment" resultType="hashmap">
+        SELECT *
+          FROM BOARD_COMMENT
+         WHERE BOARD_SEQ = #{board_seq}
+    </select>      
+    
+    <insert id="insertComment" parameterType="com.to21.torun.vo.commentVo">
+    	INSERT INTO 
+    	       BOARD_COMMENT (
+			   BOARD_SEQ,
+			   COMMENT_SEQ,
+			   CONTENT,
+			   WRITER,
+			   INIT_DATE
+			   )
+	    VALUES(
+	    	   #{board_seq},
+	    	   COMMENT_SEQ.NEXTVAL, 
+		       #{content}, 
+		       #{writer}, 
+		       TO_CHAR(SYSDATE,'yyyy.mm.dd hh24:mi')
+		       )
+    	
+    </insert>
 </mapper>

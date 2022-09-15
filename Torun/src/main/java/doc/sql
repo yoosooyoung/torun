@@ -20,3 +20,12 @@ CREATE SEQUENCE board_seq
        NOCYCLE
        NOCACHE
        NOORDER;
+       
+CREATE SEQUENCE comment_seq
+       INCREMENT BY 1
+       START WITH 1
+       MINVALUE 1
+       MAXVALUE 9999
+       NOCYCLE
+       NOCACHE
+       NOORDER;
