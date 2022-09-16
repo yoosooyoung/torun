@@ -54,7 +54,7 @@ $('#comment_button').click(function(e){
 
 function getComment(tblresult,str){
 		str =  '<tr><th>작성자</th><th>댓글</th></tr>'
-    $.each(tblresult, function(i){
+		$.each(tblresult, function(i){
         str += "<TR class='comment_tr'>"
         str += '<TD>' + tblresult[i].WRITER + '</TD><TD>' + tblresult[i].CONTENT + '</TD>'
         str += '</TR>'
