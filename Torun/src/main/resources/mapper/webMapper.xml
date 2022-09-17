@@ -63,6 +63,7 @@
         SELECT *
           FROM BOARD_COMMENT
          WHERE BOARD_SEQ = #{board_seq}
+         ORDER BY NVL(UPDATE_DATE,INIT_DATE)
     </select>      
     
     <insert id="insertComment" parameterType="com.to21.torun.vo.commentVo">

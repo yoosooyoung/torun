@@ -8,7 +8,7 @@ $(document).ready(function() {
         data: $("#comment").serialize(), // 전송 데이터
         dataType: 'json', // 전송 데이터 형식
         success: function(res){ // 성공 시 실행
-        var tblresult = res.selectComment.reverse();
+        var tblresult = res.selectComment;
         var str = "";
         if(tblresult.length > 0){
             getComment(tblresult,str);
@@ -38,7 +38,7 @@ $('#comment_button').click(function(e){
         data: $("#comment").serialize(), // 전송 데이터
         dataType: 'json', // 전송 데이터 형식
         success: function(res){ // 성공 시 실행
-        	var tblresult = res.selectComment.reverse();
+        	var tblresult = res.selectComment;
         	var str = "";
         	$("#commentList").empty();
         	getComment(tblresult,str);
@@ -53,10 +53,10 @@ $('#comment_button').click(function(e){
 
 
 function getComment(tblresult,str){
-		str =  '<tr><th>작성자</th><th>댓글</th></tr>'
+		str =  '<tr><th>작성자</th><th>댓글</th><th>작성시간</th></tr>'
 		$.each(tblresult, function(i){
         str += "<TR class='comment_tr'>"
-        str += '<TD>' + tblresult[i].WRITER + '</TD><TD>' + tblresult[i].CONTENT + '</TD>'
+        str += '<TD>' + tblresult[i].WRITER + '</TD><TD>' + tblresult[i].CONTENT + '</TD><TD>'+ tblresult[i].INIT_DATE + '</TD>' 
         str += '</TR>'
     });
     	$("#commentList").append(str);
@@ -70,7 +70,6 @@ $("#del_button").click(function(e){
         data: $("#theForm").serialize(), // 전송 데이터
         dataType: 'json', // 전송 데이터 형식
         success: function(res){ // 성공 시 실행
-        	console.log(res);
            location.href="/";
         },
         error:function(er){ //실패 시 실행
