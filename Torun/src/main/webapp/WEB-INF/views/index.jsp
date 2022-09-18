@@ -25,12 +25,12 @@
 		<c:if test="${fn:length(list) > 0}">
 			<c:forEach var="item" items="${list}">
 			<tr>
-				<td>${item.BOARD_SEQ}</td>
-				<td><a href="/board/view?board_seq=${item.BOARD_SEQ}">${item.BOARD_TITLE}</a></td>
-				<td><a href="/board/view?board_seq=${item.BOARD_SEQ}">${item.BOARD_CONTENT}</a></td>
-				<td>${item.WRITER}</td>
-				<td>${item.BOARD_INIT_DATE}</td>
-				<td>${item.BOARD_VIEWS}</td>
+				<td>${item.board_seq}</td>
+				<td><a href="/board/view/${item.board_seq}">${item.board_title}</a></td>
+				<td><a href="/board/view/${item.board_seq}">${item.board_content}</a></td>
+				<td>${item.writer}</td>
+				<td>${item.board_init_date}</td>
+				<td>${item.board_views}</td>
 			</tr>
 			</c:forEach>
 		</c:if>

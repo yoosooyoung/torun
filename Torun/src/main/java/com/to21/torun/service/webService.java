@@ -18,14 +18,14 @@ public interface webService {
 
 	public void updateBoard(webVo vo);
 
-	public void updateViews(webVo vo);
+	public void updateViews(String board_seq);
 
-	public void delBoard(webVo vo);
+	public void delBoard(String board_seq);
 
 	public List<Map<String, String>> selectComment(String board_seq);
 
 	public void insertComment(commentVo vo);
 
-	public void delComment(webVo vo);
+	public void delComment(String board_seq);
 
 }

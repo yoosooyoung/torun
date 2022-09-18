@@ -36,6 +36,8 @@ dependencies {
     //jQuery
 	implementation group: 'org.webjars.bower', name: 'jquery', version: '3.6.0'
 	implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+	implementation 'org.apache.commons:commons-collections4:4.4'
+	implementation 'org.apache.commons:commons-lang3:3.12.0'
 
 	
 }

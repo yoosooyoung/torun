@@ -21,14 +21,14 @@ public interface webDao {
 
 	public void updateBoard(webVo webVo);
 
-	public void updateViews(webVo webVo);
+	public void updateViews(String board_seq);
 
-	public void delViews(webVo webVo);
+	public void delViews(String board_seq);
 
 	public List<Map<String, String>> selectComment(String board_seq);
 
 	public void insertComment(commentVo vo);
 
-	public void delComment(webVo vo);
+	public void delComment(String board_seq);
 
 }

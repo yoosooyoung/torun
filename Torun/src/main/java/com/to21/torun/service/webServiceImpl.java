@@ -42,13 +42,13 @@ public class webServiceImpl implements webService {
 	}
 	
 	@Override
-	public void updateViews(webVo vo) {
-		webDao.updateViews((vo));
+	public void updateViews(String board_seq) {
+		webDao.updateViews(board_seq);
 	}
 	
 	@Override
-	public void delBoard(webVo vo) {
-		webDao.delViews((vo));
+	public void delBoard(String board_seq) {
+		webDao.delViews(board_seq);
 	}
 	
 	@Override
@@ -62,7 +62,7 @@ public class webServiceImpl implements webService {
 	}
 	
 	@Override
-	public void delComment(webVo vo) {
-		webDao.delComment(vo);
+	public void delComment(String board_seq) {
+		webDao.delComment(board_seq);
 	}
 }

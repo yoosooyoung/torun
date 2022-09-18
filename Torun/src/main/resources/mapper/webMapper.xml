@@ -26,13 +26,13 @@
     	
     </insert>
     
-    <select id="boardList" resultType="hashmap">
+    <select id="boardList" resultType="lowerMap">
     	SELECT * 
     	  FROM BOARD
       ORDER BY NVL(BOARD_UPDATE_DATE,BOARD_INIT_DATE) DESC
     </select>
     
-   	<select id="selectBoard" resultType="hashmap" parameterType="String">
+   	<select id="selectBoard" resultType="lowerMap" parameterType="String">
     	SELECT * 
     	  FROM BOARD
     	 WHERE BOARD_SEQ = #{board_seq}
@@ -47,19 +47,19 @@
     	 WHERE BOARD_SEQ = #{board_seq}
     </update>
 
-   	<update id="updateViews" parameterType="com.to21.torun.vo.webVo">
+   	<update id="updateViews" parameterType="String">
     	UPDATE BOARD
     	   SET BOARD_VIEWS = (SELECT BOARD_VIEWS+1 FROM BOARD WHERE BOARD_SEQ = #{board_seq})
     	 WHERE BOARD_SEQ = #{board_seq}
     </update>     
       
-   	<delete id="delViews" parameterType="com.to21.torun.vo.webVo">
+   	<delete id="delViews" parameterType="String">
     	DELETE
     	  FROM BOARD
     	 WHERE BOARD_SEQ = #{board_seq}
     </delete> 
     
-    <select id="selectComment" resultType="hashmap">
+    <select id="selectComment" resultType="lowerMap">
         SELECT *
           FROM BOARD_COMMENT
          WHERE BOARD_SEQ = #{board_seq}
@@ -85,7 +85,7 @@
     	
     </insert>
     
-    <delete id="delComment" parameterType="com.to21.torun.vo.webVo">
+    <delete id="delComment" parameterType="String">
     	DELETE 
     	  FROM BOARD_COMMENT
     	  WHERE BOARD_SEQ = #{board_seq}

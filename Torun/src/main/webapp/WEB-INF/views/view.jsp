@@ -14,23 +14,23 @@
 <div class="container my-5">
 	<form id ="theForm" class="col-md-12 my-3">
 		<h4>게시글 상세보기</h4>
-		<input type="hidden" id="board_seq" name="board_seq" value="${selectBoard.BOARD_SEQ}">
+		<input type="hidden" id="board_seq" name="board_seq" value="${selectBoard.board_seq}">
 		<table class="table-bordered">
 			<tr>
 				<th>제목</th>
-				<td>${selectBoard.BOARD_TITLE}</td>
+				<td>${selectBoard.board_title}</td>
 			</tr>
 			<tr style="height: 500px">
 				<th>글</th>
-				<td>${selectBoard.BOARD_CONTENT}</td>
+				<td>${selectBoard.board_content}</td>
 			</tr>
 			<tr>
 				<th>작성자</th>
-				<td>${selectBoard.WRITER}</td>
+				<td>${selectBoard.writer}</td>
 			</tr>
 			<tr>
 				<th>조회수</th>
-				<td>${selectBoard.BOARD_VIEWS}</td>
+				<td>${selectBoard.board_views}</td>
 			</tr>
 		</table>
 		<div class="col-md-12 bg-light text-right my-3"">	
@@ -52,7 +52,7 @@
 				<td><button id="comment_button" class="btn btn-primary">작성하기</button></td>
 			</tr>
 		</table>
-		<input type="hidden" name="board_seq" value="${selectBoard.BOARD_SEQ}">
+		<input type="hidden" name="board_seq" value="${selectBoard.board_seq}">
 	</form>
 	<div class="col-md-8 my-3">
 		<table id ="commentList" class="table-bordered table-hover">

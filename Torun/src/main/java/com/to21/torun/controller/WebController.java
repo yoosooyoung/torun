@@ -1,6 +1,5 @@
 package com.to21.torun.controller;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,14 +7,16 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.to21.torun.service.webService;
 import com.to21.torun.vo.commentVo;
 import com.to21.torun.vo.webVo;
-
-import ch.qos.logback.classic.Logger;
 
 @Controller
 public class WebController {
@@ -24,12 +25,12 @@ public class WebController {
     private webService webSvc;
 	
     /**
-     * 초기 페이지
+     * 리스트페이지
      * @param model
      * @param vo
      * @return
      */
-    @RequestMapping("/")
+    @GetMapping("/")
     public String main(Model model, webVo vo) {
     	
     	List<Map<String,String>> list = webSvc.boardList();
@@ -38,18 +39,27 @@ public class WebController {
     }
     
     /**
+     * 수정하기 위해 글쓰기 페이지
+     * @param model
+     * @param vo
+     * @return
+     */
+    @GetMapping("/write/{board_seq}")
+    public String ModifyWrite(Model model, @PathVariable String board_seq) {
+    	//뷰에서 수정하기 -> 글쓰기 페이지 이동시
+    	Map<String, String>selectBoard = webSvc.selectBoard(board_seq);
+    	model.addAttribute("selectBoard", selectBoard);
+        return "write";
+    }
+    /**
      * 글쓰기 페이지
      * @param model
      * @param vo
      * @return
      */
-    @RequestMapping("/write")
-    public String write(Model model, webVo vo) {
-    	if(vo.getBoard_seq() != null) {
-    		Map<String, String>selectBoard = webSvc.selectBoard(vo.getBoard_seq().toString());
-    		model.addAttribute("selectBoard", selectBoard);
-    	}
-        return "write";
+    @GetMapping("/write")
+    public String ModifyWrite(Model model) {
+    	return "write";
     }
         
     
@@ -58,7 +68,7 @@ public class WebController {
      * @param model
      * @param vo
      */
-    @RequestMapping("/board/insert")
+    @PostMapping("/board")
     @ResponseBody
     public Map<String, String> boardInsert(Model model, webVo vo) {
     	Map<String, String>result = new HashMap<>();
@@ -72,11 +82,10 @@ public class WebController {
      * @param model
      * @param vo
      */
-    @RequestMapping("/board/view")
-    public String boardView(Model model, webVo vo) {
-    	String board_seq = vo.getBoard_seq();
+    @GetMapping("/board/view/{board_seq}")
+    public String boardView(Model model, @PathVariable String board_seq) {
     	//조회수올리기
-    	webSvc.updateViews(vo);
+    	webSvc.updateViews(board_seq);
     	Map<String, String> selectBoard = webSvc.selectBoard(board_seq);
     	List<Map<String,String>> selectComment = webSvc.selectComment(board_seq);
     	model.addAttribute("selectBoard", selectBoard);
@@ -85,11 +94,11 @@ public class WebController {
     }
 
     /**
-     * 수정
+     * 글쓰기 수정
      * @param model
      * @param vo
      */
-    @RequestMapping("/board/update")
+    @PutMapping("/board")
     @ResponseBody
     public Map<String, String> boardUpdate(Model model, webVo vo) {
     	Map<String, String>result = new HashMap<>();
@@ -104,13 +113,13 @@ public class WebController {
      * @param model
      * @param vo
      */
-    @RequestMapping("/board/delete")
+    @DeleteMapping("/board/{board_seq}")
     @ResponseBody
-    public Map<String, String> boardDel(Model model, webVo vo) {
+    public Map<String, String> boardDel(@PathVariable String board_seq) {
     	Map<String, String>result = new HashMap<>();
     	try {
-        	webSvc.delBoard(vo);
-        	webSvc.delComment(vo);
+        	webSvc.delBoard(board_seq);
+        	webSvc.delComment(board_seq);
         	result.put("result", "success");  
 		} catch (Exception e) {
 			result.put("result","fail");
@@ -123,7 +132,7 @@ public class WebController {
      * @param model
      * @param vo
      */
-    @RequestMapping("/board/comment/insert")
+    @PostMapping("/board/comment/insert")
     @ResponseBody
     public Map<String, Object> commentInsert(Model model, commentVo vo){
     	Map<String, Object>result = new HashMap<>();
@@ -135,4 +144,20 @@ public class WebController {
     	result.put("selectComment", selectComment);    	
     	return result;
     }
+    
+    /**
+     * 댓글 읽기
+     * @param model
+     * @param vo
+     */
+    @GetMapping("/board/comment/{board_seq}")
+    @ResponseBody
+    public Map<String, Object> commentView(@PathVariable String board_seq){
+    	Map<String, Object>result = new HashMap<>();
+
+    	List<Map<String,String>> selectComment = webSvc.selectComment(board_seq);
+    	result.put("selectComment", selectComment);    	
+    	return result;
+    }    
+    
 }

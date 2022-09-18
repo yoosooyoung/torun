@@ -22,7 +22,7 @@ $(document).ready(function() {
 
 $("#button").click(function(e){
 	e.preventDefault();
-	location.href = "/write?board_seq="+ $("#board_seq").val();
+	location.href = "/write/"+ $("#board_seq").val();
 });
 
 $("#list_button").click(function(e){
@@ -56,7 +56,7 @@ function getComment(tblresult,str){
 		str =  '<tr><th>작성자</th><th>댓글</th><th>작성시간</th></tr>'
 		$.each(tblresult, function(i){
         str += "<TR class='comment_tr'>"
-        str += '<TD>' + tblresult[i].WRITER + '</TD><TD>' + tblresult[i].CONTENT + '</TD><TD>'+ tblresult[i].INIT_DATE + '</TD>' 
+        str += '<TD>' + tblresult[i].writer + '</TD><TD>' + tblresult[i].content + '</TD><TD>'+ tblresult[i].init_date + '</TD>' 
         str += '</TR>'
     });
     	$("#commentList").append(str);
@@ -64,10 +64,11 @@ function getComment(tblresult,str){
 
 $("#del_button").click(function(e){
 	e.preventDefault();
+	var baord_seq = $('#board_seq').val();
     $.ajax({
-        url: "/board/delete", // 목적지
-        type: "POST", // HTTP Method
-        data: $("#theForm").serialize(), // 전송 데이터
+        url: "/board/", // 목적지
+        type: "delete", // HTTP Method
+        data: baord_seq, // 전송 데이터
         dataType: 'json', // 전송 데이터 형식
         success: function(res){ // 성공 시 실행
            location.href="/";
