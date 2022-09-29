@@ -125,7 +125,7 @@ public class WebController {
     	}
     	
     	//쿠키가없다면 넣어준다.
-    	if(visitor ==0) {
+    	if(visitor == 0) {
     		Cookie cookie1 = new Cookie("seq",board_seq);
 			response.addCookie(cookie1);
 	    	//조회수올리기
