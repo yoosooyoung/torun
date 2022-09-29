@@ -4,7 +4,7 @@
 <html lang="ko">
     <head>
         <meta charset="utf-8">
-        <title>My Note</title>
+        <title>Daliy Note</title>
         <style type="text/css">
 			
 			ul {
@@ -57,7 +57,7 @@
     <body>
         <div class="page">
             <header>
-                <h2 onclick="goMain();">My Note</h2>
+                <h2 onclick="goMain();">Daliy Note</h2>
                 <nav>
                     <ul>
                         <li><a href="/board/list">Board</a></li>

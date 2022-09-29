@@ -48,9 +48,8 @@
     <div class="foo_div">
     </div>
     <div class="foo_div1">
-        <span>My Note</span> <span>  |  </span>
-        <span>yoosooyoung</span> <span>  |  </span>
-        <span>Daliy Note</span>
+        <span>Daliy Note</span> <span>  |  </span>
+        <span>Copyright ⓒ 2022 by yoosooyoung All Pictures cannot be copied without permission.</span>
         <p></p>
     </div>
 </footer>

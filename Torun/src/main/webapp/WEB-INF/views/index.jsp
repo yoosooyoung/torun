@@ -11,7 +11,7 @@
       <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-	<div class="container my-5">
+	<div class="container my-5 wrapper">
 		<h1>메인입니다.</h1>
 	</div>
 </body>
