@@ -17,7 +17,6 @@
 		<tr>
 		    <th>글번호</th>
 			<th>제목</th>
-			<th>글</th>
 			<th>작성자</th>
 			<th>작성시간</th>
 			<th>조회수</th>
@@ -27,7 +26,6 @@
 			<tr>
 				<td>${item.board_seq}</td>
 				<td><a href="/board/view/${item.board_seq}">${item.board_title}</a></td>
-				<td><a href="/board/view/${item.board_seq}">${item.board_content}</a></td>
 				<td>${item.writer}</td>
 				<td>${item.board_init_date}</td>
 				<td>${item.board_views}</td>

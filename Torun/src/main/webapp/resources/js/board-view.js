@@ -65,11 +65,10 @@ function getComment(tblresult,str){
 $("#del_button").click(function(e){
 	e.preventDefault();
 	var baord_seq = $('#board_seq').val();
+	console.log(baord_seq);
     $.ajax({
-        url: "/board/", // 목적지
+        url: "/board/"+baord_seq, // 목적지
         type: "delete", // HTTP Method
-        data: baord_seq, // 전송 데이터
-        dataType: 'json', // 전송 데이터 형식
         success: function(res){ // 성공 시 실행
            location.href="/";
         },
