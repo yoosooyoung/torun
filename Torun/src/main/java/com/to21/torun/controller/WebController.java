@@ -33,7 +33,7 @@ public class WebController {
     private webService webSvc;
 	
     /**
-     * 리스트페이지
+     * 메인
      * @param model
      * @param vo
      * @return
@@ -41,10 +41,22 @@ public class WebController {
     @GetMapping("/")
     public String main(Model model, webVo vo) {
     	
-    	List<Map<String,String>> list = webSvc.boardList();
-    	model.addAttribute("list", list);
         return "index";
     }
+    
+    /**
+     * 리스트
+     * @param model
+     * @param vo
+     * @return
+     */
+    @GetMapping("/board/list")
+    public String boardList(Model model, webVo vo) {
+    	
+    	List<Map<String,String>> list = webSvc.boardList();
+    	model.addAttribute("list", list);
+        return "list";
+    }    
     
     /**
      * 수정하기 위해 글쓰기 페이지

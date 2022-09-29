@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC 
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <!-- Header / Footer가 제외된 화면 -->
+    <definition name="default" template="/WEB-INF/tiles/layout/default.jsp">
+        <put-attribute name="body" value="" />
+    </definition>
+
+    <definition name="error/*" extends="default">
+        <put-attribute name="body" value="/WEB-INF/view/error/{1}.jsp" />
+    </definition>
+
+    <definition name="login" extends="default">
+        <put-attribute name="body" value="/WEB-INF/view/login.jsp" />
+    </definition>
+
+    <!-- Header / Footer가 들어간 기본 화면 -->
+    <definition name="main" template="/WEB-INF/tiles/layout/main.jsp">
+        <put-attribute name="header" value="/WEB-INF/tiles/layout/header.jsp" />
+        <put-attribute name="body" value="" />
+        <put-attribute name="footer" value="/WEB-INF/tiles/layout/footer.jsp" />
+    </definition>
+
+    <definition name="*/*" extends="main">
+        <put-attribute name="body" value="/WEB-INF/views/{1}/{2}.jsp" />
+    </definition>
+    <definition name="*" extends="main">
+        <put-attribute name="body" value="/WEB-INF/views/{1}.jsp" />
+    </definition>
+</tiles-definitions>

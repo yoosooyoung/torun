@@ -6,13 +6,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Insert title here</title>
-    <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css">
     <link href="${pageContext.request.contextPath}/resources/static/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
+    <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css">
     
 </head>
 <body>
 <div class="container my-5">
-	<form id ="theForm" class="col-md-12 my-3">
+	<form id ="theForm" class="col-md-12 my-3 wrapper">
 		<h4>게시글 상세보기</h4>
 		<input type="hidden" id="board_seq" name="board_seq" value="${selectBoard.board_seq}">
 		<table class="table-bordered">
@@ -39,6 +39,11 @@
 			<button id="list_button" class="btn btn-success">목록가기</button>
 		</div>
 	</form>
+	<div class="col-md-8 my-3">
+		<table id ="commentList" class="table-bordered table-hover">
+
+		</table>
+	</div>
 	<form id ="comment" class="col-md-8 my-3">
 		<table class="table-bordered">
 			<tr>
@@ -53,12 +58,7 @@
 			</tr>
 		</table>
 		<input type="hidden" name="board_seq" value="${selectBoard.board_seq}">
-	</form>
-	<div class="col-md-8 my-3">
-		<table id ="commentList" class="table-bordered table-hover">
-
-		</table>
-	</div>  
+	</form>	
 </div>		
 	<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
 	<script src="/resources/js/board-view.js"></script>

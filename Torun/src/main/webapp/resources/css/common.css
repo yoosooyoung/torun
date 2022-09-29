@@ -12,3 +12,13 @@
     border-left: none;
   }
 
+	footer {
+	    bottom: 0;
+	}
+	
+	.wrapper{
+		height : 100%;	
+	}
+	body {
+	    margin-bottom: 100px;
+	}

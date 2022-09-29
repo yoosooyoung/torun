@@ -27,7 +27,7 @@ $("#button").click(function(e){
 
 $("#list_button").click(function(e){
 	e.preventDefault();
-	location.href = "/";
+	location.href = "/board/list";
 });
 
 $('#comment_button').click(function(e){
@@ -70,7 +70,7 @@ $("#del_button").click(function(e){
         url: "/board/"+baord_seq, // 목적지
         type: "delete", // HTTP Method
         success: function(res){ // 성공 시 실행
-           location.href="/";
+           location.href="/board/list";
         },
         error:function(er){ //실패 시 실행
             console.log("실패 원인 : " + er);
