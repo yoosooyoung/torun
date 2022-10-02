@@ -2,6 +2,28 @@
 
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.to21.torun.webDao.memerDao">
+<mapper namespace="com.to21.torun.webDao.memberDao">
+	<insert id="insertMember" parameterType="com.to21.torun.vo.memberVo">
+    	INSERT INTO 
+    	       BOARD_MEMBER (
+			   USER_ID,
+			   USER_PW,
+			   USER_JOIN,
+			   USER_NAME,
+			   USER_EMAIL
+			   )
+	    VALUES(
+	    	   #{user_id},
+	    	   #{user_pw}, 
+	    	   TO_CHAR(SYSDATE,'yyyy.mm.dd hh24:mi'),
+		       #{user_name}, 
+		       #{user_email}
+		       )	
+	</insert>
 	
+	<select id="memberLogin" parameterType="com.to21.torun.vo.memberVo" resultType="com.to21.torun.vo.memberVo">
+		SELECT *
+		  FROM BOARD_MEMBER
+		 WHERE USER_ID = #{user_id}
+	</select>
 </mapper>

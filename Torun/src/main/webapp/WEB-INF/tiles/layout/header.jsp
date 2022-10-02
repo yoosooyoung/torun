@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>        
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -55,6 +56,16 @@
         </style>
     </head>
     <body>
+        <div class="col-md-12 text-right my-3">
+        	<c:if test="${member == null}">
+	        <a href="/signup">회원가입</a>
+	        <a href="/signin">로그인</a>
+	        </c:if>
+        	<c:if test="${member != null}">
+	        <a href="/">${member.user_name}님</a>
+	        <a href="/signout">로그아웃</a>
+	        </c:if>
+        </div>
         <div class="page">
             <header>
                 <h2 onclick="goMain();">Daliy Note</h2>
@@ -74,5 +85,6 @@
 	    function goMain() {
 	    	location.href="/";
 	    }
+	    
     </script>
 </html>

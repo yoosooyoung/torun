@@ -11,19 +11,13 @@
 </head>
 <body>
 <div class="container my-5">
-	<form id ="theForm" class="col-md-18 my-3" action="/join" method="post">
+	<form id ="theForm" class="col-md-18 my-3" action="/signin/check" method="post">
 		<div>아이디</div>
 		<input type="text" name="user_id" class="form form-control">
 		<div>패스워드</div>
 		<div><input type="text" name="user_pw" class="form form-control"></div>
-
-		<div>이름</div>
-		<div><input type="text" name="user_name" class="form form-control"></div>
-
-		<div>이메일</div>
-		<div><input type="text" name="user_email" class="form form-control"></div>
 		<div class="col-md-12 bg-light text-right my-3">	
-			<button id="sign_btn" type ="submit" class="btn btn-primary">회원가입</button>
+			<button id="sign_in_btn" type ="submit" class="btn btn-primary">로그인</button>
 			<button id="list_button" type ="button" class="btn btn-success">메인</button>
 		</div>
 

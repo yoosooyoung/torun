@@ -23,3 +23,18 @@ CREATE SEQUENCE comment_seq
        NOCACHE
        NOORDER;
        
+/* 멤버 */
+CREATE TABLE BOARD_MEMBER
+(
+ USER_ID VARCHAR2(100)  NOT NULL                             --
+ ,USER_PW VARCHAR2(100)  NOT NULL                -- 
+ ,USER_JOIN VARCHAR(100)   
+ ,USER_NAME VARCHAR(50)
+ ,USER_EMAIL VARCHAR(100)
+);       
+
+
+select * from board_member;
+       
+       
+       
