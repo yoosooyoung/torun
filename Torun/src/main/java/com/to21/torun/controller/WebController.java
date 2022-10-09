@@ -22,12 +22,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.to21.torun.common.CommonCodes;
 import com.to21.torun.service.webService;
 import com.to21.torun.vo.commentVo;
 import com.to21.torun.vo.webVo;
 
 @Controller
 public class WebController {
+	
 	private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
     @Autowired
     private webService webSvc;
@@ -101,34 +103,19 @@ public class WebController {
      * 뷰페이지
      * @param model
      * @param vo
+     * @throws Exception 
      */
     @GetMapping("/board/view/{board_seq}")
-    public String boardView(Model model, @PathVariable String board_seq, HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+    public String boardView(Model model, @PathVariable String board_seq, HttpServletRequest request, HttpServletResponse response, HttpSession session) throws Exception {
     	
     	Cookie[] cookies = request.getCookies();
-    	int visitor = 0;
+    	String CookieName = "seq";
     	
     	//쿠키가 있는지 판단
-    	for(Cookie cookie : cookies) {
-    		if(cookie.getName().equals("seq")) {
-    			visitor = 1;
-    			log.info("visit 통과");
-    			if(cookie.getValue().contains(board_seq)) {
-    				log.info("visitif 통과");
-    			}else {
-    				cookie.setValue(cookie.getValue()+"_"+board_seq);
-    				response.addCookie(cookie);
-    		    	//조회수올리기
-    		    	webSvc.updateViews(board_seq);
-    			}
-    		}
-    	}
+    	Boolean isCookies = CommonCodes.setCookies(cookies, board_seq, CookieName, response);
     	
-    	//쿠키가없다면 넣어준다.
-    	if(visitor == 0) {
-    		Cookie cookie1 = new Cookie("seq",board_seq);
-			response.addCookie(cookie1);
-	    	//조회수올리기
+    	//해당 게시물에 쿠키가 없으면 조회수를 올린다.
+    	if(isCookies) {
 	    	webSvc.updateViews(board_seq);
     	}
 
