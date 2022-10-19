@@ -1,3 +1,26 @@
+CREATE TABLE board 
+( 
+    board_seq       NUMBER(4)	NOT NULL,
+    board_title       VARCHAR2(200),
+    board_content  VARCHAR2(4000),
+    board_views          VARCHAR2(200),
+    board_init_date    VARCHAR2(20),
+    board_update_date        VARCHAR2(20),
+    writer        VARCHAR2(200)
+);
+
+ALTER TABLE board ADD CONSTRAINT board_pk PRIMARY KEY (board_seq);
+
+
+CREATE SEQUENCE board_seq
+       INCREMENT BY 1
+       START WITH 1
+       MINVALUE 1
+       MAXVALUE 9999
+       NOCYCLE
+       NOCACHE
+       NOORDER;
+
 /* 게시판 댓글 정보 생성 */
 CREATE TABLE BOARD_COMMENT
 (
@@ -11,7 +34,6 @@ CREATE TABLE BOARD_COMMENT
  ,DELETE_DATE VARCHAR2(20)                              -- 삭제일시
 );
 
-SELECT * FROM BOARD_COMMENT;
 
 
 CREATE SEQUENCE comment_seq
