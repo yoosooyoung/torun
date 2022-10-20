@@ -54,9 +54,12 @@
 			}
 			        
         </style>
+      <link href="${pageContext.request.contextPath}/resources/static/css/sb-admin-2.min.css" rel="stylesheet" type="text/css">
+      <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet" type="text/css">        
     </head>
     <body>
         <div class="col-md-12 text-right my-3">
+        <input type="hidden" id="user_id" value="${member.user_id}"/>
         	<c:if test="${member == null}">
 	        <a href="/signup">회원가입</a>
 	        <a href="/signin">로그인</a>
@@ -71,7 +74,7 @@
                 <h2 onclick="goMain();">Daliy Note</h2>
                 <nav>
                     <ul>
-                        <li><a href="/board/list">Board</a></li>
+                        <li><a href="#" onclick="checkLogin('board');">Board</a></li>
                         <li><a href="">빈칸</a></li>
                         <li><a href="">빈칸</a></li>
                         <li><a href="">빈칸</a></li>
@@ -85,6 +88,19 @@
 	    function goMain() {
 	    	location.href="/";
 	    }
+	    function checkLogin(type) {
+	    	if($('#user_id').val() != ''){
+		    	if(type == 'board'){
+		    		location.href="/board/list";
+		    	}
+		    	 return true;
+	    	}else{
+	    		alert('로그인을 해주세요.')
+	    		return false;
+	    	}
+
+	    }
 	    
     </script>
+    <script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
 </html>

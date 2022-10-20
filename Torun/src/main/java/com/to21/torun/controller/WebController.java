@@ -8,6 +8,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -118,7 +119,7 @@ public class WebController {
     	if(isCookies) {
 	    	webSvc.updateViews(board_seq);
     	}
-
+    	
     	Map<String, String> selectBoard = webSvc.selectBoard(board_seq);
     	List<Map<String,String>> selectComment = webSvc.selectComment(board_seq);
     	model.addAttribute("selectBoard", selectBoard);
@@ -161,6 +162,21 @@ public class WebController {
     }    
     
     /**
+     *뷰페이지 읽기
+     * @param model
+     * @param vo
+     */
+    @PostMapping("/board/comment/list")
+    @ResponseBody
+    public Map<String, Object> commentList(Model model, commentVo vo){
+    	Map<String, Object>result = new HashMap<>();
+    	String board_seq = vo.getBoard_seq();
+    	List<Map<String,String>> selectComment = webSvc.selectComment(board_seq);
+    	result.put("selectComment", selectComment);    	
+    	return result;
+    }
+    
+    /**
      * 댓글인서트 && 뷰페이지 읽기
      * @param model
      * @param vo
@@ -169,9 +185,7 @@ public class WebController {
     @ResponseBody
     public Map<String, Object> commentInsert(Model model, commentVo vo){
     	Map<String, Object>result = new HashMap<>();
-    	if(!vo.getWriter().equals("")) {
-        	webSvc.insertComment(vo);	
-    	}
+    	webSvc.insertComment(vo);	
     	String board_seq = vo.getBoard_seq();
     	List<Map<String,String>> selectComment = webSvc.selectComment(board_seq);
     	result.put("selectComment", selectComment);    	

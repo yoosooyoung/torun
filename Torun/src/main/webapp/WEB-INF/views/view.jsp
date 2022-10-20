@@ -52,7 +52,9 @@
 				<th></th>
 			</tr>
 			<tr>
-				<td><input type="text" name="writer" id="writer" class="form-control"></td>
+				<td><input type="text"  class="form-control" value="${member.user_name}" disabled="true">
+					<input type="hidden" name="writer" id="writer" class="form-control" value="${member.user_id}">
+				</td>
 				<td><input type="text" name="content" id="content" class="form-control"></td>
 				<td><button id="comment_button" class="btn btn-primary">작성하기</button></td>
 			</tr>
@@ -60,7 +62,6 @@
 		<input type="hidden" name="board_seq" value="${selectBoard.board_seq}">
 	</form>	
 </div>		
-	<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
 	<script src="/resources/js/board-view.js"></script>
 </body>
 </html>

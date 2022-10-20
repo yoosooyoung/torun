@@ -34,7 +34,6 @@
 		</c:if>
 	</form>
 </div>
-	<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
 	<script src="/resources/js/board-write.js"></script>
 </body>
 </html>

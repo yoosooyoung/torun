@@ -3,7 +3,7 @@
  */
 $(document).ready(function() {
     $.ajax({
-        url: "/board/comment/insert", // 목적지
+        url: "/board/comment/list", // 목적지
         type: "POST", // HTTP Method
         data: $("#comment").serialize(), // 전송 데이터
         dataType: 'json', // 전송 데이터 형식
@@ -32,6 +32,10 @@ $("#list_button").click(function(e){
 
 $('#comment_button').click(function(e){
 	e.preventDefault();
+	if($('#content').val() == ''){
+		alert('댓글을 작성해주세요.')
+		return false;
+	}
     $.ajax({
         url: "/board/comment/insert", // 목적지
         type: "POST", // HTTP Method
@@ -42,7 +46,6 @@ $('#comment_button').click(function(e){
         	var str = "";
         	$("#commentList").empty();
         	getComment(tblresult,str);
-        	$("#writer").val('');
         	$("#content").val('');
         },
         error:function(er){ //실패 시 실행

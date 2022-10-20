@@ -38,9 +38,5 @@
 		</table>
 	<div class="col-md-12 bg-light text-right my-3"><a href="/write" class="btn btn-primary">글쓰기</a></div>
 	</div>
-	<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>
-	<script>
-
-	</script>
 </body>
 </html>
