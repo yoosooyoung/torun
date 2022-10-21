@@ -3,6 +3,7 @@ package com.to21.torun.service;
 import java.util.List;
 import java.util.Map;
 
+import com.to21.torun.common.Pagination;
 import com.to21.torun.vo.commentVo;
 import com.to21.torun.vo.webVo;
 
@@ -27,5 +28,11 @@ public interface webService {
 	public void insertComment(commentVo vo);
 
 	public void delComment(String board_seq);
+	
+    //Paging
+    public List<Map<String, String>> boardList(Pagination pagination) throws Exception;
+ 
+    //count
+    public int boardListCount() throws Exception;
 
 }

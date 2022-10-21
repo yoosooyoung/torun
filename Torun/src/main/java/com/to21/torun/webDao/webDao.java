@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import com.to21.torun.common.Pagination;
 import com.to21.torun.vo.commentVo;
 import com.to21.torun.vo.webVo;
 
@@ -30,5 +31,11 @@ public interface webDao {
 	public void insertComment(commentVo vo);
 
 	public void delComment(String board_seq);
+	
+    //Paging
+    public List<Map<String, String>> boardList(Pagination pagination) throws Exception;
+ 
+    //count
+    public int boardListCount() throws Exception;	
 
 }

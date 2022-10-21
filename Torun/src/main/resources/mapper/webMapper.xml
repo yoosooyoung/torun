@@ -27,9 +27,25 @@
     </insert>
     
     <select id="boardList" resultType="lowerMap">
-    	SELECT * 
-    	  FROM BOARD
-      ORDER BY NVL(BOARD_UPDATE_DATE,BOARD_INIT_DATE) DESC
+		SELECT B.*
+		  FROM (	    
+	    	SELECT BOARD_SEQ,
+	    		   BOARD_TITLE,
+	    		   BOARD_CONTENT,
+	    		   BOARD_VIEWS,
+	    		   BOARD_INIT_DATE, 
+	    		   BOARD_UPDATE_DATE, 
+	    		   WRITER,
+	    		   ROW_NUMBER() OVER(ORDER BY BOARD_SEQ DESC) AS RNUM 
+	    	  FROM BOARD
+	    	  ) B
+	     WHERE RNUM BETWEEN #{firstRecordIndex} AND #{lastRecordIndex} 
+	  ORDER BY NVL(BOARD_UPDATE_DATE,BOARD_INIT_DATE) DESC
+    </select>
+    
+    <select id="boardListCount" resultType="int">
+        SELECT COUNT(*) FROM
+        BOARD
     </select>
     
    	<select id="selectBoard" resultType="lowerMap" parameterType="String">

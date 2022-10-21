@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.to21.torun.common.Pagination;
 import com.to21.torun.vo.commentVo;
 import com.to21.torun.vo.webVo;
 import com.to21.torun.webDao.webDao;
@@ -64,5 +65,13 @@ public class webServiceImpl implements webService {
 	@Override
 	public void delComment(String board_seq) {
 		webDao.delComment(board_seq);
+	}
+	@Override
+	public List<Map<String, String>> boardList(Pagination pagination) throws Exception {
+		return webDao.boardList(pagination);
+	}
+	@Override
+	public int boardListCount() throws Exception {
+		return webDao.boardListCount();
 	}
 }

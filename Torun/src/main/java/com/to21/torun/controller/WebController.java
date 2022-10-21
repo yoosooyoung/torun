@@ -8,7 +8,6 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +20,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.to21.torun.common.CommonCodes;
+import com.to21.torun.common.Pagination;
 import com.to21.torun.service.webService;
 import com.to21.torun.vo.commentVo;
 import com.to21.torun.vo.webVo;
@@ -54,10 +55,17 @@ public class WebController {
      * @return
      */
     @GetMapping("/board/list")
-    public String boardList(Model model, webVo vo) {
+    public String boardList(
+            @RequestParam(value = "currentPage", required = false, defaultValue = "1") int currentPage,
+            @RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
+            @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,   		
+            Map<String, Object> map, HttpServletRequest request, webVo vo, Model model) throws Exception {
     	
-    	List<Map<String,String>> list = webSvc.boardList();
-    	model.addAttribute("list", list);
+    	int listCnt = webSvc.boardListCount();
+    	Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
+    	pagination.setTotalRecordCount(listCnt);
+    	model.addAttribute("pagination", pagination);
+    	model.addAttribute("Alllist", webSvc.boardList(pagination));
         return "list";
     }    
     
