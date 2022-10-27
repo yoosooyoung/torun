@@ -15,7 +15,7 @@
 		<div>아이디</div>
 		<input type="text" name="user_id" class="form form-control">
 		<div>패스워드</div>
-		<div><input type="text" name="user_pw" class="form form-control"></div>
+		<div><input type="password" name="user_pw" class="form form-control"></div>
 
 		<div>이름</div>
 		<div><input type="text" name="user_name" class="form form-control"></div>

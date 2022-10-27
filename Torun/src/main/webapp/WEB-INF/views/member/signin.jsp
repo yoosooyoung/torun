@@ -15,7 +15,7 @@
 		<div>아이디</div>
 		<input type="text" name="user_id" class="form form-control">
 		<div>패스워드</div>
-		<div><input type="text" name="user_pw" class="form form-control"></div>
+		<div><input type="password" name="user_pw" class="form form-control"></div>
 		<div class="col-md-12 bg-light text-right my-3">	
 			<button id="sign_in_btn" type ="submit" class="btn btn-primary">로그인</button>
 			<button id="list_button" type ="button" class="btn btn-success">메인</button>
