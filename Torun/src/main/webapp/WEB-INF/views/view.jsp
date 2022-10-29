@@ -33,10 +33,12 @@
 				<td>${selectBoard.board_views}</td>
 			</tr>
 		</table>
-		<div class="col-md-12 bg-light text-right my-3"">	
-			<button id="button" class="btn btn-primary">수정하기</button>
-			<button id="del_button" class="btn btn-danger">삭제하기</button>
-			<button id="list_button" class="btn btn-success">목록가기</button>
+		<div class="col-md-12 bg-light text-right my-3">	
+			<c:if test="${selectBoard.writer == member.user_id}">
+				<button id="button" class="btn btn-primary">수정하기</button>
+				<button id="del_button" class="btn btn-danger">삭제하기</button>
+			</c:if>
+				<button id="list_button" class="btn btn-success">목록가기</button>
 		</div>
 	</form>
 	<div class="col-md-8 my-3">

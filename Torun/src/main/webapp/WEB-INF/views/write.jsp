@@ -21,7 +21,10 @@
 		<div><textarea name="board_content" class="form form-control" style="height: 500px">${selectBoard.board_content}</textarea></div>
 
 		<div>작성자</div>
-		<div><input type="text" name="writer" value="${selectBoard.writer}" class="form form-control"></div>
+		<div>
+			<input type="text" name="" value="${member.user_name}" class="form form-control" disabled="true">
+		    <input type="hidden" name="writer" value="${member.user_id}" class="form form-control">	
+		</div>
 		<c:if test="${selectBoard.board_seq == null}">	
 		<div class="col-md-12 bg-light text-right my-3">	
 			<button id="button" class="btn btn-primary">작성하기</button>
