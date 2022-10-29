@@ -55,8 +55,22 @@ CREATE TABLE BOARD_MEMBER
  ,USER_EMAIL VARCHAR(100)
 );       
 
+-- 게시글 좋아요 버튼 컬럼 수정
+-- 총 좋아요 수
+ALTER TABLE board ADD board_like NUMBER(4);
 
-select * from board_member;
+/* 좋아요-사용자 맵핑테이블 */
+CREATE TABLE BOARD_LIKE
+(
+ USER_ID VARCHAR2(100)  NOT NULL                             --
+ ,BOARD_SEQ VARCHAR2(100)  NOT NULL                --  
+ ,INIT_USER VARCHAR2(20)
+ ,INIT_DATE VARCHAR2(20)
+ ,UPDATE_USER VARCHAR2(20)
+ ,UPDATE_DATE VARCHAR2(20)
+);     
+
+
        
        
        

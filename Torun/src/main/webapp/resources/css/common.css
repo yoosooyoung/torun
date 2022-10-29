@@ -168,4 +168,12 @@ body {
     top: 0;
     right: 0;
 }
+
+.like_img {
+  width: auto;
+  height: 20px;
+  object-fit: fill;
+  cursor: pointer;
+}
+
  

@@ -213,6 +213,15 @@ public class WebController {
     	List<Map<String,String>> selectComment = webSvc.selectComment(board_seq);
     	result.put("selectComment", selectComment);    	
     	return result;
-    }    
+    } 
+    
+
+    @PostMapping("/board/likeMapp")
+    @ResponseBody
+    public Map<String, Object> likeBoardMapp(@RequestParam("board_seq") String board_seq){
+    	Map<String, Object>result = new HashMap<>();   	
+    	
+    	return result;
+    }
     
 }

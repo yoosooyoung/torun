@@ -15,20 +15,29 @@
 		<h1>게시판</h1>
 		<table>
 		<tr>
-		    <th>글번호</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>작성시간</th>
-			<th>조회수</th>
+		    <th class="text-center">글번호</th>
+			<th class="text-center">제목</th>
+			<th class="text-center">작성자</th>
+			<th class="text-center">작성시간</th>
+			<th class="text-center">조회수</th>
+			<th class="text-center">좋아요수</th>
+			<th class="text-center">좋아요</th>
 		</tr>
 		<c:if test="${fn:length(Alllist) > 0}">
 			<c:forEach var="item" items="${Alllist}">
 			<tr>
-				<td>${item.board_seq}</td>
+				<td class="text-center">${item.board_seq}</td>
 				<td><a href="/board/view/${item.board_seq}">${item.board_title}</a></td>
 				<td>${item.writer}</td>
-				<td>${item.board_init_date}</td>
-				<td>${item.board_views}</td>
+				<td class="text-center">${item.board_init_date}</td>
+				<td class="text-center">${item.board_views}</td>
+				<td class="text-center">${item.board_views}</td>
+				<td class="text-center">
+					<img src="/resources/img/non_like.png" 
+					     class="like_img"
+					     id="like_img${item.board_seq}" 
+					     onClick="toggleLike(${item.board_seq})">
+				</td>
 			</tr>
 			</c:forEach>
 		</c:if>
@@ -82,7 +91,27 @@ function movePage(currentPage, cntPerPage, pageSize){
     
     location.href=url;
 }
- 
+
+function toggleLike(board_seq){
+ 	 $.ajax({
+	        url: "/board/likeMapp", // 목적지
+	        type: "POST", // HTTP Method
+	        data: {board_seq : board_seq}, // 전송 데이터
+	        dataType: 'json', // 전송 데이터 형식
+	        success: function(res){ // 성공 시 실행
+	        	if($("#like_img"+board_seq).attr('src') == '/resources/img/non_like.png'){
+	        	 	$("#like_img"+board_seq).attr("src", "/resources/img/like.png");
+	        	}else{
+	        	 	$("#like_img"+board_seq).attr("src", "/resources/img/non_like.png");	
+	        	}
+	        },
+	        error:function(er){ //실패 시 실행
+	            console.log("실패 원인 : " + er);
+	        }
+	    }); 
+
+}
+
 </script>
 
 
