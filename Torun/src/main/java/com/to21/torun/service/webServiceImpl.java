@@ -74,4 +74,19 @@ public class webServiceImpl implements webService {
 	public int boardListCount() throws Exception {
 		return webDao.boardListCount();
 	}
+	
+	@Override
+	public void insertLikeBoard(Map<String, String> params) throws Exception {
+		webDao.insertLikeBoard(params);
+	}
+	
+	@Override
+	public int likeCount(Map<String, String> params) throws Exception {
+		return webDao.likeCount(params);
+	}
+	
+	@Override
+	public void deleteLikeBoard(Map<String, String> params) throws Exception {
+		webDao.deleteLikeBoard(params);
+	}
 }

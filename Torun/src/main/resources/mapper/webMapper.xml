@@ -29,15 +29,16 @@
     <select id="boardList" resultType="lowerMap">
 		SELECT B.*
 		  FROM (	    
-	    	SELECT BOARD_SEQ,
-	    		   BOARD_TITLE,
-	    		   BOARD_CONTENT,
-	    		   BOARD_VIEWS,
-	    		   BOARD_INIT_DATE, 
-	    		   BOARD_UPDATE_DATE, 
-	    		   WRITER,
-	    		   ROW_NUMBER() OVER(ORDER BY BOARD_SEQ DESC) AS RNUM 
-	    	  FROM BOARD
+	    	SELECT BD.BOARD_SEQ,
+	    		   BD.BOARD_TITLE,
+	    		   BD.BOARD_CONTENT,
+	    		   BD.BOARD_VIEWS,
+	    		   BD.BOARD_INIT_DATE, 
+	    		   BD.BOARD_UPDATE_DATE, 
+	    		   BD.WRITER,
+	    		   ROW_NUMBER() OVER(ORDER BY BD.BOARD_SEQ DESC) AS RNUM,
+	    		   (SELECT COUNT(*) FROM BOARD_LIKE WHERE BD.BOARD_SEQ = BOARD_SEQ AND USER_ID = #{user_id}) CNT
+	    	  FROM BOARD BD
 	    	  ) B
 	     WHERE RNUM BETWEEN #{firstRecordIndex} AND #{lastRecordIndex} 
 	  ORDER BY NVL(BOARD_UPDATE_DATE,BOARD_INIT_DATE) DESC
@@ -105,5 +106,35 @@
     	DELETE 
     	  FROM BOARD_COMMENT
     	  WHERE BOARD_SEQ = #{board_seq}
+    </delete>
+    
+    <insert id="insertLikeBoard" parameterType="hashmap">
+    	INSERT INTO 
+    	       BOARD_LIKE (
+    	       USER_ID,
+    	       BOARD_SEQ,
+    	       INIT_USER,
+    	       INIT_DATE
+    	       )
+    	VALUES(
+    			#{user_id},
+    			#{board_seq},
+    			#{user_id},
+    			TO_CHAR(SYSDATE,'yyyy.mm.dd hh24:mi')
+    			)
+    </insert>
+    
+    <select id="likeCount" parameterType="hashmap" resultType="int">
+    	SELECT COUNT(*)
+    	  FROM BOARD_LIKE
+         WHERE BOARD_SEQ = #{board_seq}
+           AND USER_ID = #{user_id}
+    </select>
+    
+    <delete id="deleteLikeBoard" parameterType="hashmap">
+        DELETE
+    	  FROM BOARD_LIKE
+         WHERE BOARD_SEQ = #{board_seq}
+           AND USER_ID = #{user_id}    	
     </delete>
 </mapper>

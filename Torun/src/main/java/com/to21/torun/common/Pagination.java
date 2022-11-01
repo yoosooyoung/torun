@@ -1,6 +1,8 @@
 package com.to21.torun.common;
 
-public class Pagination {
+import com.to21.torun.vo.memberVo;
+
+public class Pagination extends memberVo {
 	 
     // 현재페이지
     private int currentPage;

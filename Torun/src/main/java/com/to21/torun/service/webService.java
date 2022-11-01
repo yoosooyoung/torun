@@ -35,4 +35,10 @@ public interface webService {
     //count
     public int boardListCount() throws Exception;
 
+	public void insertLikeBoard(Map<String, String> params) throws Exception;
+
+	public int likeCount(Map<String, String> params) throws Exception;
+
+	public void deleteLikeBoard(Map<String, String> params) throws Exception;
+
 }

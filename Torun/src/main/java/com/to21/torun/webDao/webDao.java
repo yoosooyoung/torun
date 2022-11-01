@@ -36,6 +36,12 @@ public interface webDao {
     public List<Map<String, String>> boardList(Pagination pagination) throws Exception;
  
     //count
-    public int boardListCount() throws Exception;	
+    public int boardListCount() throws Exception;
+
+	public void insertLikeBoard(Map<String, String> params) throws Exception;
+
+	public int likeCount(Map<String, String> params) throws Exception;
+
+	public void deleteLikeBoard(Map<String, String> params) throws Exception;
 
 }

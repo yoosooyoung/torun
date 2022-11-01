@@ -33,10 +33,18 @@
 				<td class="text-center">${item.board_views}</td>
 				<td class="text-center">${item.board_views}</td>
 				<td class="text-center">
-					<img src="/resources/img/non_like.png" 
-					     class="like_img"
-					     id="like_img${item.board_seq}" 
-					     onClick="toggleLike(${item.board_seq})">
+					<c:if test="${item.cnt == 0}">
+						<img src="/resources/img/non_like.png" 
+						     class="like_img"
+						     id="like_img${item.board_seq}" 
+						     onClick="toggleLike(${item.board_seq})">
+					</c:if>
+					<c:if test="${item.cnt > 0}">
+						<img src="/resources/img/like.png" 
+						     class="like_img"
+						     id="like_img${item.board_seq}" 
+						     onClick="toggleLike(${item.board_seq})">
+					</c:if>
 				</td>
 			</tr>
 			</c:forEach>

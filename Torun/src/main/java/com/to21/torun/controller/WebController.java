@@ -27,10 +27,11 @@ import com.to21.torun.common.CommonCodes;
 import com.to21.torun.common.Pagination;
 import com.to21.torun.service.webService;
 import com.to21.torun.vo.commentVo;
+import com.to21.torun.vo.memberVo;
 import com.to21.torun.vo.webVo;
 
 @Controller
-public class WebController {
+public class WebController<memberVO> {
 	
 	private final Logger log = LoggerFactory.getLogger(this.getClass().getSimpleName());
     @Autowired
@@ -60,10 +61,11 @@ public class WebController {
             @RequestParam(value = "cntPerPage", required = false, defaultValue = "10") int cntPerPage,
             @RequestParam(value = "pageSize", required = false, defaultValue = "10") int pageSize,   		
             Map<String, Object> map, HttpServletRequest request, webVo vo, Model model) throws Exception {
-    	
+    	memberVo memberVO = (memberVo)request.getSession().getAttribute("member");
     	int listCnt = webSvc.boardListCount();
     	Pagination pagination = new Pagination(currentPage, cntPerPage, pageSize);
     	pagination.setTotalRecordCount(listCnt);
+    	pagination.setUser_id(memberVO.getUser_id());
     	model.addAttribute("pagination", pagination);
     	model.addAttribute("Alllist", webSvc.boardList(pagination));
         return "list";
@@ -218,9 +220,22 @@ public class WebController {
 
     @PostMapping("/board/likeMapp")
     @ResponseBody
-    public Map<String, Object> likeBoardMapp(@RequestParam("board_seq") String board_seq){
-    	Map<String, Object>result = new HashMap<>();   	
+    public Map<String, Object> likeBoardMapp(@RequestParam("board_seq") String board_seq, HttpServletRequest request) throws Exception{
+    	Map<String, Object> result = new HashMap<>();   	
+    	Map<String, String> params = new HashMap<>();
     	
+    	//user_id
+    	memberVo memberVO = (memberVo)request.getSession().getAttribute("member");
+    	params.put("board_seq", board_seq);
+    	params.put("user_id", memberVO.getUser_id());
+    	
+    	int likeCount = webSvc.likeCount(params);
+    	
+    	if(likeCount == 0) {
+    		webSvc.insertLikeBoard(params);
+    	}else {
+    		webSvc.deleteLikeBoard(params);
+    	}
     	return result;
     }
     
