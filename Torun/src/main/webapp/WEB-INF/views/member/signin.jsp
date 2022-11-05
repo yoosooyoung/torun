@@ -16,11 +16,12 @@
 		<input type="text" name="user_id" class="form form-control">
 		<div>패스워드</div>
 		<div><input type="password" name="user_pw" class="form form-control"></div>
+		<div id="login"></div>
 		<div class="col-md-12 bg-light text-right my-3">	
 			<button id="sign_in_btn" type ="submit" class="btn btn-primary">로그인</button>
 			<button id="list_button" type ="button" class="btn btn-success">메인</button>
 		</div>
-
+		<input type="hidden" value="${result}" id="result">
 	</form>
 </div>
 	<script src="/webjars/jquery/3.6.0/dist/jquery.min.js"></script>

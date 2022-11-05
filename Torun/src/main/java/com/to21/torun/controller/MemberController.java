@@ -1,5 +1,8 @@
 package com.to21.torun.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.to21.torun.service.memberService;
@@ -45,15 +49,20 @@ public class MemberController {
      * @return
      */
     @PostMapping("/join")
-    public String signUpCheck(Model model, memberVo vo) {
+    @ResponseBody
+    public Map<String, String> signUpCheck(Model model, memberVo vo) {
+    	Map<String, String>result = new HashMap<>();
+    	try {
+        	//패스워드암호화진행
+        	vo.setUser_pw(pwEncoder.encode(vo.getUser_pw()));
+        	//회원가입서비스 실행
+        	memberSvc.insertMember(vo);
+        	result.put("result", "0");
+		} catch (Exception e) {
+			result.put("result", "1");
+		}
     	
-    	//패스워드암호화진행
-    	vo.setUser_pw(pwEncoder.encode(vo.getUser_pw()));
-    	
-    	//회원가입서비스 실행
-    	memberSvc.insertMember(vo);
-    	
-        return "index";
+        return result;
     }
     
     /**
@@ -97,7 +106,7 @@ public class MemberController {
                 return "redirect:/signin";
             }
         } else {        // 일치하는 아이디가 존재하지 않을 시
-            rttr.addFlashAttribute("result", 0);
+            rttr.addFlashAttribute("result", 1);
             return "redirect:/signin";
         }
     }   
