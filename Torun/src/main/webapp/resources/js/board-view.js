@@ -22,7 +22,7 @@ $(document).ready(function() {
 
 $("#button").click(function(e){
 	e.preventDefault();
-	location.href = "/write/"+ $("#board_seq").val();
+	location.href = "/board/write/"+ $("#board_seq").val();
 });
 
 $("#list_button").click(function(e){

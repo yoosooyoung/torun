@@ -53,7 +53,7 @@
 			<td colspan="6" class="text-center">글이 없습니다.</td>
 		</c:if>
 		</table>
-	<div class="col-md-12 bg-light text-right my-3"><a href="/write" class="btn btn-primary">글쓰기</a></div>
+	<div class="col-md-12 bg-light text-right my-3"><a href="/board/write" class="btn btn-primary">글쓰기</a></div>
 	</div>
    <!--paginate -->
     <div class="paginate">

@@ -74,7 +74,7 @@
                 <h2 onclick="goMain();">Daliy Note</h2>
                 <nav>
                     <ul>
-                        <li><a href="#" onclick="checkLogin('board');">Board</a></li>
+                        <li><a href="/board/list">Board</a></li>
                         <li><a href="">빈칸</a></li>
                         <li><a href="">빈칸</a></li>
                         <li><a href="">빈칸</a></li>
@@ -87,18 +87,6 @@
     <script>
 	    function goMain() {
 	    	location.href="/";
-	    }
-	    function checkLogin(type) {
-	    	if($('#user_id').val() != ''){
-		    	if(type == 'board'){
-		    		location.href="/board/list";
-		    	}
-		    	 return true;
-	    	}else{
-	    		alert('로그인을 해주세요.')
-	    		return false;
-	    	}
-
 	    }
 	    
     </script>

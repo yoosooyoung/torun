@@ -77,7 +77,7 @@ public class WebController<memberVO> {
      * @param vo
      * @return
      */
-    @GetMapping("/write/{board_seq}")
+    @GetMapping("/board/write/{board_seq}")
     public String ModifyWrite(Model model, @PathVariable String board_seq) {
     	//뷰에서 수정하기 -> 글쓰기 페이지 이동시
     	Map<String, String>selectBoard = webSvc.selectBoard(board_seq);
@@ -90,7 +90,7 @@ public class WebController<memberVO> {
      * @param vo
      * @return
      */
-    @GetMapping("/write")
+    @GetMapping("/board/write")
     public String ModifyWrite(Model model) {
     	return "write";
     }
