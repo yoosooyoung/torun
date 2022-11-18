@@ -176,4 +176,10 @@ body {
   cursor: pointer;
 }
 
+.main_img {
+    margin: auto;
+    display: block;
+}
+
+
  

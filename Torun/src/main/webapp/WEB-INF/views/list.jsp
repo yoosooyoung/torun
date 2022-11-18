@@ -31,7 +31,7 @@
 				<td>${item.writer}</td>
 				<td class="text-center">${item.board_init_date}</td>
 				<td class="text-center">${item.board_views}</td>
-				<td class="text-center">${item.cnt}</td>
+				<td class="text-center">${item.total_like_cnt}</td>
 				<td class="text-center">
 					<c:if test="${item.cnt == 0}">
 						<img src="/resources/img/non_like.png" 

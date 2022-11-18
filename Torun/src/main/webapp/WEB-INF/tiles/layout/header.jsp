@@ -71,13 +71,13 @@
         </div>
         <div class="page">
             <header>
-                <h2 onclick="goMain();">Daliy Note</h2>
+                <h2 onclick="goMain();">Friends Shared Diary</h2>
                 <nav>
                     <ul>
-                        <li><a href="/board/list">Board</a></li>
-                        <li><a href="">빈칸</a></li>
-                        <li><a href="">빈칸</a></li>
-                        <li><a href="">빈칸</a></li>
+                        <li><a href="/board/list">Diary</a></li>
+                        <li><a href="">Famous Restaurant</a></li>
+                        <li><a href="">Schedule</a></li>
+                        <li><a href="">Accounts</a></li>
                     </ul>
                 </nav>
             </header>

@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="container my-5 wrapper">
-		<h1>메인입니다.</h1>
+		<img src="/resources/img/main_png.png" class="main_img">
 	</div>
 </body>
 </html>
