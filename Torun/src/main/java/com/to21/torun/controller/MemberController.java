@@ -52,6 +52,14 @@ public class MemberController {
     @ResponseBody
     public Map<String, String> signUpCheck(Model model, memberVo vo) {
     	Map<String, String>result = new HashMap<>();
+    	
+    	//아이디 중복 체크
+    	int checkId = memberSvc.checkId(vo);
+    	if(checkId > 0) {
+    		result.put("result", "1");
+    		return result;
+    	}
+    	
     	try {
         	//패스워드암호화진행
         	vo.setUser_pw(pwEncoder.encode(vo.getUser_pw()));
@@ -115,7 +123,7 @@ public class MemberController {
     @GetMapping("/signout")
     public String logout(HttpServletRequest request) throws Exception{
         
-    	log.info("로그아웃 진행중");
+    	log.info("----------logout---------");
         
         HttpSession session = request.getSession();
         

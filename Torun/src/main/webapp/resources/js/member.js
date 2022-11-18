@@ -112,7 +112,8 @@ $("#sign_btn").click(function(e){
 			if(res.result == 0){
 				location.href="/";
 			}else{
-				location.href="/signup";
+				const id_content = document.getElementById('id_content');
+		  		id_content.innerHTML = "<div style='color:red'>중복된 아이디입니다.</div>";
 			}
         },
         error:function(er){ //실패 시 실행

@@ -26,4 +26,10 @@
 		  FROM BOARD_MEMBER
 		 WHERE USER_ID = #{user_id}
 	</select>
+	
+	<select id="checkId" parameterType="com.to21.torun.vo.memberVo" resultType="int">
+		SELECT COUNT(*) AS CNT
+		  FROM BOARD_MEMBER
+		 WHERE USER_ID = #{user_id}	
+	</select>
 </mapper>

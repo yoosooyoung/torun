@@ -11,4 +11,6 @@ public interface memberDao {
 
 	memberVo memberLogin(memberVo vo);
 
+	int checkId(memberVo vo);
+
 }

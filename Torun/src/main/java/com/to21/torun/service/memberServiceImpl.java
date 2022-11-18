@@ -21,4 +21,9 @@ public class memberServiceImpl implements memberService {
 	public memberVo memberLogin(memberVo vo) {
 		return memberDao.memberLogin(vo);
 	}
+	
+	@Override
+	public int checkId(memberVo vo) {
+		return memberDao.checkId(vo);
+	}
 }

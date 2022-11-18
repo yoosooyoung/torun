@@ -8,4 +8,6 @@ public interface memberService {
 
 	memberVo memberLogin(memberVo member);
 
+	int checkId(memberVo vo);
+
 }
