@@ -31,7 +31,7 @@
 				<td>${item.writer}</td>
 				<td class="text-center">${item.board_init_date}</td>
 				<td class="text-center">${item.board_views}</td>
-				<td class="text-center">${item.board_views}</td>
+				<td class="text-center">${item.cnt}</td>
 				<td class="text-center">
 					<c:if test="${item.cnt == 0}">
 						<img src="/resources/img/non_like.png" 
@@ -112,6 +112,7 @@ function toggleLike(board_seq){
 	        	}else{
 	        	 	$("#like_img"+board_seq).attr("src", "/resources/img/non_like.png");	
 	        	}
+	        	location.reload();
 	        },
 	        error:function(er){ //실패 시 실행
 	            console.log("실패 원인 : " + er);
