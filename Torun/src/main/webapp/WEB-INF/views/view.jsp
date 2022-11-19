@@ -15,7 +15,11 @@
 	<form id ="theForm" class="col-md-12 my-3 wrapper">
 		<h4>게시글 상세보기</h4>
 		<input type="hidden" id="board_seq" name="board_seq" value="${selectBoard.board_seq}">
-		<table class="table-bordered">
+		<table class="basic-table">
+			<colgroup>
+				<col width="100px;">
+				<col width="*;">
+			</colgroup>
 			<tr>
 				<th>제목</th>
 				<td>${selectBoard.board_title}</td>

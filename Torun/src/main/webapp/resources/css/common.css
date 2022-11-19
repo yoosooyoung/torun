@@ -182,4 +182,57 @@ body {
 }
 
 
+
+/* common layout */
+.c-box {
+	display: block;
+	width: 100%;
+	padding: 30px 20px;
+	border-radius: 10px;
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+
+/* login */
+.login-wrap {
+	width: calc(100% - 40px);
+	max-width: 500px;
+	margin: 0 auto;
+}
+.login-title {
+	text-align: center;
+    font-size: 35px;
+    margin-bottom: 60px;
+    font-weight: 600;
+    color: #111;
+}
+.login-wrap {
+	min-height: 100vh;
+	display:flex;
+	flex-direction: column;
+	align-items:center;
+	justify-content:center;
+}
+
+
+/* basic-table */
+.basic-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.basic-table th,
+.basic-table td {
+	border: 1px solid #ddd;
+	padding: 10px 15px;
+}
+.basic-table th {
+	font-weight: 600;
+    background-color: #f9f9f9;
+}
+
+
+
+
+
+
  
