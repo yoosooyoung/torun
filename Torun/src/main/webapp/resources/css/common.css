@@ -1,3 +1,9 @@
+ul, li{
+	padding: 0px;
+	margin: 0px;
+}
+
+
  table {
    width: 100%;
    border-top: 1px solid #444444;
@@ -230,9 +236,31 @@ body {
     background-color: #f9f9f9;
 }
 
+/*comment*/
+.comment_list > li {
+	padding: 10px 20px;
+	border-radius : 5px;
+	border : 1px solid #ddd;
+	margin : 10px 0 0;
+}
 
+.writer {
+	font-weight: bold;
+	padding-right : 5px;
+}
 
+.comment_form{
+	display: flex;
+}
 
+.comment_form > textarea {
+	width: calc(100% - 120px);
+	
+}
+
+#comment_button {
+	width: 120px;
+}
 
 
  

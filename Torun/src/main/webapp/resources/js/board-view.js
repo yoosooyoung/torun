@@ -56,11 +56,11 @@ $('#comment_button').click(function(e){
 
 
 function getComment(tblresult,str){
-		str =  '<tr><th>작성자</th><th>댓글</th><th>작성시간</th></tr>'
+		str =  '';
 		$.each(tblresult, function(i){
-        str += "<TR class='comment_tr'>"
-        str += '<TD>' + tblresult[i].writer + '</TD><TD>' + tblresult[i].content + '</TD><TD>'+ tblresult[i].init_date + '</TD>' 
-        str += '</TR>'
+        str += "<li class='comment_tr'>"
+        str += `<p><span class="writer">${tblresult[i].writer}</span> <span>${tblresult[i].init_date}</span></p> <p>${tblresult[i].content}</p>`;
+        str += '</li>'
     });
     	$("#commentList").append(str);
 }

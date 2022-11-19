@@ -45,26 +45,22 @@
 				<button id="list_button" class="btn btn-success">목록가기</button>
 		</div>
 	</form>
-	<div class="col-md-8 my-3">
-		<table id ="commentList" class="table-bordered table-hover">
+	<div class="col-md-12">
+		<ul id ="commentList" class="comment_list">
 
-		</table>
+		</ul>
 	</div>
-	<form id ="comment" class="col-md-8 my-3">
-		<table class="table-bordered">
-			<tr>
-				<th>작성자</th>
-				<th>댓글</th>
-				<th></th>
-			</tr>
-			<tr>
-				<td><input type="text"  class="form-control" value="${member.user_name}" disabled="true">
+	<form id ="comment" class="col-md-12">
+			<div>
+				<p>
 					<input type="hidden" name="writer" id="writer" class="form-control" value="${member.user_id}">
-				</td>
-				<td><input type="text" name="content" id="content" class="form-control"></td>
-				<td><button id="comment_button" class="btn btn-primary">작성하기</button></td>
-			</tr>
-		</table>
+				</p>
+				<div class="comment_form">
+				<textarea name="content" id="content" class="form-control"></textarea>
+				<button id="comment_button" class="btn btn-primary">작성하기</button>
+				</div>
+			</div>
+
 		<input type="hidden" name="board_seq" value="${selectBoard.board_seq}">
 	</form>	
 </div>		
