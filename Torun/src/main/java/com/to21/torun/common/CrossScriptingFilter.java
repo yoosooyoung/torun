@@ -11,15 +11,15 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 
 public class CrossScriptingFilter implements Filter {
- 
-    private Object filterConfig;
+	 
+    private FilterConfig filterConfig;
 
 	public void init(FilterConfig filterConfig) throws ServletException {
-        this.setFilterConfig(filterConfig);
+        this.filterConfig = filterConfig;
     }
  
     public void destroy() {
-        this.setFilterConfig(null);
+        this.filterConfig = null;
     }
  
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -28,13 +28,5 @@ public class CrossScriptingFilter implements Filter {
         chain.doFilter(new RequestWrapper((HttpServletRequest) request), response);
  
     }
-
-	public Object getFilterConfig() {
-		return filterConfig;
-	}
-
-	public void setFilterConfig(Object filterConfig) {
-		this.filterConfig = filterConfig;
-	}
  
 }

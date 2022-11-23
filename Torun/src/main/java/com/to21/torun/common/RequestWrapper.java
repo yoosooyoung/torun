@@ -3,8 +3,8 @@ package com.to21.torun.common;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletRequestWrapper;
 
-public class RequestWrapper extends HttpServletRequestWrapper {
- 
+public final class RequestWrapper extends HttpServletRequestWrapper {
+	 
     public RequestWrapper(HttpServletRequest servletRequest) {
         super(servletRequest);
     }

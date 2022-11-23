@@ -105,7 +105,7 @@ public class WebController<memberVO> {
     @ResponseBody
     public Map<String, String> boardInsert(Model model, webVo vo) {
     	Map<String, String>result = new HashMap<>();
-    	webSvc.insertBoard(vo);	
+    	webSvc.insertBoard(vo);
     	result.put("result", "success");    	
     	return result;
     }
@@ -238,5 +238,16 @@ public class WebController<memberVO> {
     	}
     	return result;
     }
+    
+    /**
+     * 마이페이지
+     * @param model
+     * @param vo
+     * @return
+     */
+    @GetMapping("/user/mypage/{user_id}")
+    public String settingMypage(@PathVariable String user_id) {
+    	return "member/mypage";
+    }    
     
 }

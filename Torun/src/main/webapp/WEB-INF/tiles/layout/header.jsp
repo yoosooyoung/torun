@@ -65,7 +65,7 @@
 	        <a href="/signin">로그인</a>
 	        </c:if>
         	<c:if test="${member != null}">
-	        <a href="/">${member.user_name}님</a>
+	        <a href="/user/mypage/${member.user_id}">${member.user_name}님</a>
 	        <a href="/signout">로그아웃</a>
 	        </c:if>
         </div>
